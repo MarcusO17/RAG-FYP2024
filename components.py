@@ -30,4 +30,7 @@ class Components:
     def get_groq_llm(self,model_name):
         return Groq(model_name,api_key=os.getenv("GROQ_API_KEY"))
     
-        
+    """TODO
+    CUSTOM QA Templates for Each Model
+    Start Evaluation Basic.
+    """
