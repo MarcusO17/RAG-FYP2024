@@ -36,43 +36,43 @@ class Components:
             return """You are an assistant for question-answering tasks. 
             Use the following pieces of retrieved context to answer the question.
             If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
-            Question: {question} 
-            Context: {context} 
+            Question: {query_str} 
+            Context: {context_str} 
             Answer:"""
         elif self.model_name == "llama-3.1-8b-instant":
             return """You are an assistant for question-answering tasks. 
             Use the following pieces of retrieved context to answer the question.
             If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
-            Question: {question} 
-            Context: {context} 
+            Question: {query_str} 
+            Context: {context_str}
             Answer:"""
         elif self.model_name == " llama3-70b-8192":
             return """You are an assistant for question-answering tasks. 
             Use the following pieces of retrieved context to answer the question.
             If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
-            Question: {question} 
-            Context: {context} 
+            Question: {query_str}  
+            Context: {context_str}
             Answer:"""
         elif self.model_name == "llama3-8b-8192":
             return """You are an assistant for question-answering tasks. 
             Use the following pieces of retrieved context to answer the question.
             If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
-            Question: {question} 
-            Context: {context} 
+            Question: {query_str} 
+            Context: {context_str} 
             Answer:"""
         elif self.model_name == "mixtral-8x7b-32768":
             return """You are an assistant for question-answering tasks. 
             Use the following pieces of retrieved context to answer the question.
             If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
-            Question: {question} 
-            Context: {context} 
+            Question: {query_str} 
+            Context: {context_str} 
             Answer:"""
         elif self.model_name == "gemma2-9b-it":
             return """You are an assistant for question-answering tasks. 
             Use the following pieces of retrieved context to answer the question.
             If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.
-            Question: {question} 
-            Context: {context} 
+            Question: {query_str} 
+            Context: {context_str}
             Answer:"""
 
     
