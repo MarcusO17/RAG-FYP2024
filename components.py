@@ -19,7 +19,7 @@ class Components:
         return embedding_model
 
     def get_reranker(self):
-        reranker_model = FlagEmbeddingReranker(model=self.reranker, top_n=10)
+        reranker_model = FlagEmbeddingReranker(model=self.reranker, top_n=5)
         print("Reranker model loaded!")
         return reranker_model
     
@@ -30,7 +30,7 @@ class Components:
     
     def get_groq_llm(self):
         return Groq(self.model_name,api_key=os.getenv("GROQ_API_KEY"))
-    
+        
     def get_qa_template(self):
         if self.model_name == "llama-3.1-70b-versatile":
             return """You are an assistant for question-answering tasks. 
