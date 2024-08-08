@@ -49,3 +49,16 @@ Evaluate the RAG model with both the reranker and embeddings finetuned for the s
 - **User Feedback**: Collect feedback from users regarding the accuracy and relevance of the information provided by each configuration.
 - **Error Analysis**: Regularly analyze errors and performance metrics to identify areas for improvement.
 - **Iterative Improvements**: Use the evaluation results to iteratively refine and improve the model configurations.
+
+
+NOTES
+** Try https://huggingface.co/vectara/hallucination_evaluation_model for evalaution
+
+1. FIND A OPEN-DOMAIN DATASET with CONTEXT
+sub tasks evaluate
+on Closed Domain QA
+on Open Domain QA
+
+https://aclanthology.org/2020.nlpcovid19-acl.18/
+CMU 
+https://www.youtube.com/watch?v=Ki8aZKugTJ0
