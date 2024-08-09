@@ -62,3 +62,8 @@ on Open Domain QA
 https://aclanthology.org/2020.nlpcovid19-acl.18/
 CMU 
 https://www.youtube.com/watch?v=Ki8aZKugTJ0
+
+
+1. COVID-QA
+2. CLOSED-DOMAIN-QA
+3. 

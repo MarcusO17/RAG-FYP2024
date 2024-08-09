@@ -2,8 +2,6 @@ from typing import Optional, List, Mapping, Any
 import os
 
 from groq import Groq
-from llama_index.core import SimpleDirectoryReader, SummaryIndex
-from llama_index.core.callbacks import CallbackManager
 from llama_index.core.llms import (
     CustomLLM,
     CompletionResponse,
@@ -13,20 +11,26 @@ from llama_index.core.llms import (
 from llama_index.core.llms.callbacks import llm_completion_callback
 from llama_index.core import Settings
 
-
 """ 
 TODO
-1. Add setters 
-2. Add temp
+1. Add setters (REDACTED)
+2. Add temp and params (DONE)
 3. Change to JSON mode
+4. Fix stream
+5. Add error validation and catching
 """
+
 class GroqLLM(CustomLLM):
-    context_window: int
+    context_window: int 
     num_output: int 
     model_name: str 
     is_chat_model : bool = True
     is_function_calling_model: bool = True
     client: Optional[Groq]
+    #Only recommended to change either one but NOT BOTH
+    top_p: float = 1.0
+    temperature: float = 1.0
+    tools: Optional[Any]
     system_prompt : str = "you are a helpful assistant."
 
 
@@ -59,33 +63,32 @@ class GroqLLM(CustomLLM):
                 }
             ],
             model=self.model_name,
-
+            temperature= self.temperature,
+            top_p= self.top_p,
+            tools= None,
         )
         return CompletionResponse(text=chat_completion.choices[0].message.content)
 
     @llm_completion_callback()
     def stream_complete(self, prompt: str, **kwargs: Any) -> CompletionResponseGen:
-        try:
-            stream = self.client.chat.completions.create(
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "you are a helpful assistant."
-                    },
-                    {
-                        "role": "user",
-                        "content": prompt,
-                    }
-                ],
-                model=self.model_name,
-                stream=True,
-            )
-            
-            response = ""
-            for chunk in stream:
-                if chunk.choices[0].delta.content is not None:
-                    content = chunk.choices[0].delta.content
-                    response += content
-                    yield CompletionResponse(text=response, delta=content)
-        except Exception as e:
-            raise ValueError(f"Error in Groq API streaming: {str(e)}")
+        stream = self.client.chat.completions.create(
+            messages=[
+                {
+                    "role": "system",
+                    "content": self.system_prompt
+                },
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ],
+            model=self.model_name,
+            stream=True,
+        )
+        
+        response = ""
+        for chunk in stream:
+            if chunk.choices[0].delta.content is not None:
+                content = chunk.choices[0].delta.content
+                response += content
+                yield CompletionResponse(text=response, delta=content)
