@@ -15,8 +15,10 @@ from llama_index.core import Settings
 TODO
 1. Add setters (REDACTED)
 2. Add temp and params (DONE)
-3. Change to JSON mode
-4. Fix stream
+3. Change to JSON mode (REDACTED)
+3.5 Change to Full Pydantic (REFACTORED, UNABLE TO CHANGE)
+4. Fix stream (DONE)
+4.5 let client be outside this class
 5. Add error validation and catching
 """
 
@@ -27,15 +29,14 @@ class GroqLLM(CustomLLM):
     is_chat_model : bool = True
     is_function_calling_model: bool = True
     client: Optional[Groq]
-    #Only recommended to change either one but NOT BOTH
+    #Only recommended to change either one but NOT BOTH                  
     top_p: float = 1.0
     temperature: float = 1.0
     tools: Optional[Any]
     system_prompt : str = "you are a helpful assistant."
 
-
-    def __init__(self, **data):
-        super().__init__(**data)
+    def __init__(self, **params):
+        super().__init__(**params)
         self.client = Groq(api_key=os.environ.get("GROQ_API_KEY")) 
 
     @property
@@ -83,6 +84,9 @@ class GroqLLM(CustomLLM):
                 }
             ],
             model=self.model_name,
+            temperature= self.temperature,
+            top_p= self.top_p,
+            tools= None,
             stream=True,
         )
         
