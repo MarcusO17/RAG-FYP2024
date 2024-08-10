@@ -37,7 +37,7 @@ class GroqLLM(CustomLLM):
 
     def __init__(self, **params):
         super().__init__(**params)
-        self.client = Groq(api_key=os.environ.get("GROQ_API_KEY")) 
+        self.client = params.get("client", None)
 
     @property
     def metadata(self) -> LLMMetadata:
