@@ -1,6 +1,4 @@
-from typing import Optional, List, Mapping, Any
-import os
-
+from typing import Optional, Any
 from groq import Groq
 from llama_index.core.llms import (
     CustomLLM,
@@ -9,7 +7,6 @@ from llama_index.core.llms import (
     LLMMetadata,
 )
 from llama_index.core.llms.callbacks import llm_completion_callback
-from llama_index.core import Settings
 
 """ 
 TODO
@@ -18,11 +15,13 @@ TODO
 3. Change to JSON mode (REDACTED)
 3.5 Change to Full Pydantic (REFACTORED, UNABLE TO CHANGE)
 4. Fix stream (DONE)
-4.5 let client be outside this class
-5. Add error validation and catching
+4.5 let client be outside this class (DONE)
+5. Add error validation and catching (ONLY CATCHING DONE, VALIDATION DONE AFTER)
 """
 
 class GroqLLM(CustomLLM):
+    """Class to wrap around GroqAPI client for LlamaIndex. Greatly improves parameter control compared to existing builtin solution. 
+    """
     context_window: int 
     num_output: int 
     model_name: str 
@@ -52,47 +51,53 @@ class GroqLLM(CustomLLM):
 
     @llm_completion_callback()
     def complete(self, prompt: str, **kwargs: Any) -> CompletionResponse:
-        chat_completion = self.client.chat.completions.create(
-            messages=[
-                {
-                    "role": "system",
-                    "content": self.system_prompt
-                },
-                {
-                    "role": "user",
-                    "content": prompt,
-                }
-            ],
-            model=self.model_name,
-            temperature= self.temperature,
-            top_p= self.top_p,
-            tools= None,
-        )
-        return CompletionResponse(text=chat_completion.choices[0].message.content)
+        try:
+            chat_completion = self.client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": self.system_prompt
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt,
+                    }
+                ],
+                model=self.model_name,
+                temperature= self.temperature,
+                top_p= self.top_p,
+                tools= None,
+            )
+            return CompletionResponse(text=chat_completion.choices[0].message.content)
+        except Exception as e:
+            return CompletionResponse(text=f"Error: {e}, Please try again.")
 
     @llm_completion_callback()
     def stream_complete(self, prompt: str, **kwargs: Any) -> CompletionResponseGen:
-        stream = self.client.chat.completions.create(
-            messages=[
-                {
-                    "role": "system",
-                    "content": self.system_prompt
-                },
-                {
-                    "role": "user",
-                    "content": prompt,
-                }
-            ],
-            model=self.model_name,
-            temperature= self.temperature,
-            top_p= self.top_p,
-            tools= None,
-            stream=True,
-        )
-        
-        response = ""
-        for chunk in stream:
-            if chunk.choices[0].delta.content is not None:
-                content = chunk.choices[0].delta.content
-                response += content
-                yield CompletionResponse(text=response, delta=content)
+        try:
+            stream = self.client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": self.system_prompt
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt,
+                    }
+                ],
+                model=self.model_name,
+                temperature= self.temperature,
+                top_p= self.top_p,
+                tools= None,
+                stream=True,
+            )
+            
+            response = ""
+            for chunk in stream:
+                if chunk.choices[0].delta.content is not None:
+                    content = chunk.choices[0].delta.content
+                    response += content
+                    yield CompletionResponse(text=response, delta=content)
+        except Exception as e:
+            return CompletionResponse(text=f"Error: {e}, Please try again.")
