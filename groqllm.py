@@ -22,8 +22,8 @@ TODO
 class GroqLLM(CustomLLM):
     """Class to wrap around GroqAPI client for LlamaIndex. Greatly improves parameter control compared to existing builtin solution. 
     """
-    context_window: int 
-    num_output: int 
+    context_window: int = 3900
+    num_output: int = 256
     model_name: str 
     is_chat_model : bool = True
     is_function_calling_model: bool = True

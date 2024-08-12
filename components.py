@@ -2,6 +2,7 @@ import numpy as np
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReranker
 #from llama_index.llms.groq import Groq
+from groq import Groq
 from groqllm import GroqLLM
 from llama_index.core import PromptTemplate
 from dotenv import load_dotenv
@@ -31,7 +32,7 @@ class Components:
         return chroma_collection
     
     def get_groq_llm(self):
-        return GroqLLM(self.model_name,api_key=os.getenv("GROQ_API_KEY"),temperature=0.1)
+        return GroqLLM(model_name=self.model_name,client=Groq(api_key=os.getenv("GROQ_API_KEY")),temperature=0.1)
         
     def get_qa_template(self):
         qa_template_str = """
@@ -55,4 +56,6 @@ class Components:
             return PromptTemplate(qa_template_str)
         elif self.model_name == "gemma2-9b-it":
            return PromptTemplate(qa_template_str)
+    
+
 
