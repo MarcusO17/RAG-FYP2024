@@ -32,7 +32,11 @@ class Components:
         return chroma_collection
     
     def get_groq_llm(self):
-        return GroqLLM(model_name=self.model_name,client=Groq(api_key=os.getenv("GROQ_API_KEY")),temperature=0.1)
+        return GroqLLM(model_name=self.model_name,client=Groq(api_key=os.getenv("GROQ_API_KEY")),temperature=0.1,system_prompt="""Instructions:
+- Be helpful and answer questions concisely. If you don't know the answer, say 'I don't know'
+- Utilize the context provided for accurate and specific information.
+- Incorporate your preexisting knowledge to enhance the depth and relevance of your response.
+- Be concise and to the point.""")
         
     def get_qa_template(self):
         qa_template_str = """
