@@ -31,8 +31,8 @@ class Components:
         chroma_collection = db.get_or_create_collection("temp")
         return chroma_collection
     
-    def get_groq_llm(self):
-        return GroqLLM(model_name=self.model_name,client=Groq(api_key=os.getenv("GROQ_API_KEY")),temperature=0.1)
+    def get_groq_llm(self,**kwargs):
+        return GroqLLM(model_name=self.model_name,client=Groq(api_key=os.getenv("GROQ_API_KEY")),temperature=0.1,system_prompt = kwargs['system_prompt'])
         
     def get_qa_template(self):
         qa_template_str = """
