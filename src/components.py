@@ -17,7 +17,7 @@ class Components:
         self.model_name = model_name
 
     def get_embedding_model(self):
-        embedding_model = HuggingFaceEmbedding(model_name = self.embed)
+        embedding_model = HuggingFaceEmbedding(model_name = self.embed,trust_remote_code=True)
         print("Embedding model loaded!")
         return embedding_model
 
@@ -32,7 +32,7 @@ class Components:
         return chroma_collection
     
     def get_groq_llm(self,**kwargs):
-        return GroqLLM(model_name=self.model_name,client=Groq(api_key=os.getenv("GROQ_API_KEY")),temperature=0.1,system_prompt = kwargs['system_prompt'])
+        return GroqLLM(model_name=self.model_name,client=Groq(api_key=os.getenv("GROQ_API_KEY")),temperature=0.1,system_prompt = kwargs.get('system_prompt', 'You are a helpful assistant.'))
         
     def get_qa_template(self):
         qa_template_str = """

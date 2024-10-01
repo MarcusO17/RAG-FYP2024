@@ -37,6 +37,7 @@ class GroqLLM(CustomLLM):
     def __init__(self, **params):
         super().__init__(**params)
         self.client = params.get("client", None)
+        self.system_prompt = params.get("system_prompt", "you are a helpful assistant.")
 
     @property
     def metadata(self) -> LLMMetadata:
