@@ -1,3 +1,9 @@
+"""
+    A class to hold all RAG components for ease of testing  DEPRECATED.
+Returns:
+    _type_: _description_
+"""
+
 import numpy as np
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReranker
@@ -32,6 +38,7 @@ class Components:
         return chroma_collection
     
     def get_groq_llm(self,**kwargs):
+        print("LLM model loaded!")
         return GroqLLM(model_name=self.model_name,client=Groq(api_key=os.getenv("GROQ_API_KEY")),temperature=0.1,system_prompt = kwargs.get('system_prompt', 'You are a helpful assistant.'))
         
     def get_qa_template(self):
