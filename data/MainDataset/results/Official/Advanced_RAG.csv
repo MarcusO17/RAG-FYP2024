@@ -3,56 +3,54 @@ question,answers,gen_answer,truth
 president adams,"John Quincy Adams was an American statesman who served as a diplomat, minister and ambassador to foreign nations, and treaty negotiator, United States Senator, U.S. Representative from Massachusetts, and the sixth President of the United States from 1825 to 1829.","John Quincy Adams was the sixth President of the United States, serving from 1825 to 1829.",1
 define semitic,"A member of any of a number of peoples of ancient southwestern Asia including the Akkadians, Phoenicians, Hebrews and Arabsb.","According to the provided context, a Semitic person is defined as:
 
-""1a: a member of any of a number of peoples of ancient southwestern Asia including the Akkadians, Phoenicians, Hebrews, and Arabs; b: a descendant of these peoples.""
-
-In simpler terms, a Semitic person refers to a member of an ethnic, cultural, or racial group who speaks or spoke a Semitic language, such as the Akkadians, Phoenicians, Hebrews, and Arabs.",1
-what is wudfhost service,It is a set of Microsoft tools that aid in the creation of device drivers for Windows.,The WUDFHost service is a Windows Driver Foundation (WDF) User-mode Driver Framework Host Process. It is a Windows system process that runs in user-mode and is responsible for hosting user-mode drivers.,1
+""1a: a member of any of a number of peoples of ancient southwestern Asia including the Akkadians, Phoenicians, Hebrews, and Arabs; b: a descendant of these peoples.""",1
+what is wudfhost service,It is a set of Microsoft tools that aid in the creation of device drivers for Windows.,"The WUDFHost service is a Windows Driver Foundation (WDF) User-mode Driver Framework Host Process, which is a set of Microsoft tools that aid in the creation of device drivers for Windows. It is a system process that runs in the context of its parent svchost.exe (Host Process for Windows Services by Microsoft Corporation).",1
 what is an overactive pancreas,"An overactive pancrease would produce more enzymes, but in the Islets of Langerhans, it could also produce too much insulin. Too much insulin in the blood could produce Hypoglycemia or low blood sugar.This is sometimes called pre-diabetes.","An overactive pancreas would produce more enzymes, but in the Islets of Langerhans, it could also produce too much insulin. Too much insulin in the blood could produce Hypoglycemia or low blood sugar.",1
 where is ATP synthase located,In the mitochondria,"ATP synthase is located in the mitochondria, specifically in the inner mitochondrial membrane and the mitochondrial matrix.",1
-what kind of bond is created by the attraction between atomic particles of opposite charge?,Ionic,A chemical bond is created by the attraction between atomic particles of opposite charge.,0
-how much money does a athletic trainer trainer get a year,"$38,000 to $82,000 per year","According to the provided context, the median annual salary for an Athletic Trainer is $42,774, as of March 31, 2017. Additionally, the bottom 10% of athletic trainers earned $25,960 or less, while the top 10% earned $64,140 or more each year.",1
-how long before rigor sets in,12 hour,"Rigor mortis typically sets in within 3-4 hours after death, but can vary depending on factors such as temperature, physical activity before death, and individual factors.",0
-what is the color code for a rainbow,"In rainbow, the code for red is #FF0000, #FF7F00 for orange and #FFFF00 for yellow.","According to the provided context, the traditional colors of the rainbow are:
+what kind of bond is created by the attraction between atomic particles of opposite charge?,Ionic,"Based on the context, I'd say that the kind of bond created by the attraction between atomic particles of opposite charge is an electrostatic bond, also known as an ionic bond.",1
+how much money does a athletic trainer trainer get a year,"$38,000 to $82,000 per year","According to the provided context, the median annual salary for an Athletic Trainer is $42,774, as of March 31, 2017.",1
+how long before rigor sets in,12 hour,"After death, rigor mortis typically sets in within 1-4 hours.",0
+what is the color code for a rainbow,"In rainbow, the code for red is #FF0000, #FF7F00 for orange and #FFFF00 for yellow.","The traditional colors of the rainbow, in order, are:
 
 1. Red (Hex: #FF0000, RGB: 255, 0, 0)
 2. Orange (Hex: #FF7F00, RGB: 255, 127, 0)
 3. Yellow (Hex: #FFFF00, RGB: 255, 255, 0)
-4. Green (no specific code mentioned)
-5. Blue (no specific code mentioned, but actually cyan)
+4. Green (no specific code mentioned, but can be approximated as #008000 or RGB: 0, 128, 0)
+5. Blue (note: this is actually cyan, Hex: #00FFFF or RGB: 0, 255, 255)
 6. Indigo (no specific code mentioned)
 7. Violet (no specific code mentioned)
 
-Note that the exact color codes for green, blue, indigo, and violet are not provided in the given context.",1
+Alternatively, you can use the VIBGYOR acronym to remember the colors, with the corresponding hex and RGB codes:
+
+V - Violet (no specific code mentioned)
+I - Indigo (no specific code mentioned)
+B - Blue (note: this is actually cyan, Hex: #00FFFF or RGB: 0, 255, 255)
+G - Green (no specific code mentioned)
+Y - Yellow (Hex: #FFFF00, RGB: 255, 255, 0)
+O - Orange (Hex: #FF7F00, RGB: 255, 127, 0)
+R - Red (Hex: #FF0000, RGB: 255, 0, 0)
+
+Note that the exact color codes for Indigo and Violet are not specified, as they can vary depending on the context and personal interpretation.",1
 charity navigator definition,Charity Navigator is an American independent charity watchdog organization that evaluates charitable organizations in the United States.,Charity Navigator is an American independent charity watchdog organization that evaluates charitable organizations in the United States. Its stated goal is to advance a more efficient and responsive philanthropic marketplace in which givers and the charities they support work in tandem to overcome the nation's and the world's most persistent challenges.,1
-can ativan be used for insomnia,Yes,"Yes, Ativan (lorazepam) can be used for insomnia.",1
-who is gal rimon gameffective,Founder and ceo of gameffective.,"I apologize, but there is no information provided about Gal Rimon being gameffective. The context only mentions Ellie and a university Anatomy and Physiology instructor. If you meant to ask about a different topic, please feel free to rephrase the question.",0
-indication that a breastfed baby is getting an adequate amount of milk is,The first dark stools passed by the baby to yellow stools by Day 5 and three to four stools per day by the fourth day of life.,"According to the provided context, indications that a breastfed baby is getting an adequate amount of milk include:
+can ativan be used for insomnia,Yes,"Yes, Ativan (lorazepam) is used for insomnia.",1
+who is gal rimon gameffective,Founder and ceo of gameffective.,Ellie.,0
+indication that a breastfed baby is getting an adequate amount of milk is,The first dark stools passed by the baby to yellow stools by Day 5 and three to four stools per day by the fourth day of life.,"According to the provided context, the indications that a breastfed baby is getting an adequate amount of milk are:
 
 * Baby has adequate weight gain
 * At least three stools per day after Day 1 and at least six wet diapers per day by Day 4
-* Transition from dark to yellow stools by Day 5 and three to four stools per day by the fourth day of life
-* Wet diapers: 4-5+ sopping wet diapers per day (older than 6 weeks)",1
+* Transition from dark stools to yellow stools by Day 5 and three to four stools per day by the fourth day of life
+* Wet diapers: 4-5+ sopping wet diapers per day (older than 6 weeks)
+
+Please note that counting wet and dirty diapers is not a reliable indication of adequate milk intake, as it can be inaccurate.",1
 what degree do you have to get to a engineer,"An engineer's degree is an advanced academic degree in engineering that is conferred in Europe, some countries of Latin America, and a few institutions in the United States.","According to the context, to work in research either in industry or in academia or for a government research lab, you need to get a Ph.D.",0
-what year was the xbox released,2001,"The original Xbox video game console was released on November 15, 2001.",1
+what year was the xbox released,2001,2001,1
 where is the deepest body of ocean,Mariana Trench,"The deepest body of ocean is the Mariana Trench, specifically the Challenger Deep, which is located in the Pacific Ocean.",1
 which is better for you aspirin or ibuprofen,Aspirin,"For those with heart problems, such as heart disease, uncontrolled high blood pressure, or previous heart attack or stroke, acetaminophen or aspirin is generally a better first option.",1
-what is the difference between conductivity and resistivity,"Conductivity is the electrical current flow, while resistivity is a measure of the material's ability to oppose electric current.","Conductivity is the intrinsic property of a material, whereas conductance is the extrinsic property of an object. Conductivity is the inherent ability of a material to conduct electricity, whereas conductance is the ability of an object to conduct electricity, which depends on its size, shape, and amount of material.",0
+what is the difference between conductivity and resistivity,"Conductivity is the electrical current flow, while resistivity is a measure of the material's ability to oppose electric current.","Conductivity is the intrinsic property of a material, whereas resistivity is the extrinsic property. Conductivity is the inherent ability of a material to conduct electricity, whereas resistivity is the opposition to the flow of electricity.",1
 how soon can nausea start in pregnancy,As early as the second week of your pregnancy.,"Nausea can start as early as the second week of pregnancy, but most of the time it does not start until between the fourth and sixth weeks of pregnancy.",1
-what is a nata,It is the authority that provides independent assurance of technical competence through a proven network of best practice industry experts for customers who require confidence.,"Based on the provided context, a NATA can refer to:
-
-* National Aptitude Test in Architecture, which is an entrance exam conducted by the Council of Architecture (COA) to measure the aptitude of applicants for admission to the first year of a five-year B.Arch degree.
-* Nata, which is a harvest spirit in the Nahua tribes, associated with corn, and also mentioned in the context of Balder, a mythological figure.
-
-Please let me know if you'd like me to clarify or provide more information!",0
-what is a palliative consult,"Palliative Care Program is a specialized service providing pain and symptom management, counseling, support and guidance in navigating health care options and choices.","A palliative consult is a consultation provided by a palliative care team, which includes doctors, nurses, social workers, and other healthcare professionals, to relieve suffering and improve quality of life for patients with serious illnesses.",1
-what is the survival rate for ovarian cancer,57% to 90%,"According to the provided context, the survival rate for ovarian cancer varies depending on the stage and other factors. Here are some specific survival rates mentioned:
-
-* For stage II low-grade ovarian cancer, the survival rate is >80% at 5 years if completely staged, cytoreduced, and treated with chemotherapy after surgery. Without these qualifications, it is about 65% at 5 years.
-* For stage IV ovarian cancer that has spread to the brain, the 5-year survival rate is around 11%.
-* For ovarian cancer in general, about 75% of women survive one year after diagnosis, and 46% survive five years after being diagnosed.
-* The 5-year survival rate drops as the stage of the cancer increases, with an 18% five-year survival rate in women whose cancer has spread beyond the abdomen.
-
-Please note that these are general statistics and may not apply to an individual's specific situation. A doctor can provide a more accurate prognosis based on a person's medical history, type of cancer, stage, characteristics of the cancer, treatments chosen, and response to treatment.",1
+what is a nata,It is the authority that provides independent assurance of technical competence through a proven network of best practice industry experts for customers who require confidence.,"A nata refers to a harvest spirit, as well as a unit of measurement, typically the distance from the shoulder to the shoulder.",0
+what is a palliative consult,"Palliative Care Program is a specialized service providing pain and symptom management, counseling, support and guidance in navigating health care options and choices.","A palliative consult is a consultation provided by a palliative medicine specialist to relieve suffering and improve quality of life for individuals with serious illnesses, focusing on pain and symptom management, counseling, and guidance in navigating healthcare options and choices.",1
+what is the survival rate for ovarian cancer,57% to 90%,"According to the provided context, the survival rate for ovarian cancer varies depending on the stage and other factors. For stage II low-grade ovarian cancer, the survival rate is >80% at 5 years if completely staged, cytoreduced, and treated with chemotherapy after surgery. Without these qualifications, it is about 65% at 5 years.",1
 bible names meaning jeremy,"The meaning of name Jeremy is ""god will uplift"".","According to the context, the name Jeremy has the following meanings:
 
 * In Israeli, the name Jeremy means ""God will uplift"".
@@ -61,19 +59,19 @@ bible names meaning jeremy,"The meaning of name Jeremy is ""god will uplift"".",
 Please let me know if you have any further questions!",1
 where does the nile river end/,Mediterranean Sea,The Nile River ends where it flows into the Mediterranean Sea at the north edge of Egypt.,1
 what county is elkader iowa in,Clayton,"Elkader, Iowa is in Clayton County.",1
-what does ear wax color mean,"If your wax is dark, that means the wax is filled with debris, dust, dirt, and microorganisms.","Earwax color can indicate its age and composition. Fresh earwax is typically yellow or orange, while older earwax can turn white and flaky. Dark-colored earwax, often brownish, can indicate a buildup of debris, dust, and microorganisms, which may increase the risk of earwax buildup.",1
-executive officer meaning,"An executive officer (often abbreviated XO) is generally a person responsible for running an organization, although the exact nature of the role varies depending on the organization.","According to the context, an executive officer is defined as:
+what does ear wax color mean,"If your wax is dark, that means the wax is filled with debris, dust, dirt, and microorganisms.","Earwax color can indicate its age and composition. Fresh earwax is typically yellow or orange, while older earwax can turn white and flaky. Dark-colored earwax, often brownish, can indicate a buildup of debris, dust, and microorganisms.",1
+executive officer meaning,"An executive officer (often abbreviated XO) is generally a person responsible for running an organization, although the exact nature of the role varies depending on the organization.","According to the context, an Executive Officer is defined as:
 
 * The officer second in command of a military or naval organization or vessel.
 * A person responsible for running an organization, although the exact nature of the role varies depending on the organization.
 * In the case of a limited liability company, an executive officer is any member, manager, or officer.
 * In the airline industry, the executive officer, more commonly known as the first officer, is the second in command of the aircraft.
-* In a company, the chief executive officer (CEO) is a top-ranking corporate position, responsible for overseeing operations.",1
-lanark what county,Lanark is in Lanark County.,Lanark County is a county located in the Canadian province of Ontario.,1
+* In a company, the Chief Executive Officer (CEO) is a top-ranking corporate position, responsible for overseeing operations.",1
+lanark what county,Lanark is in Lanark County.,Lanark County is a county located in the Canadian province of Ontario.,0
 what county is vega tx in,Oldham County,"Vega, TX is in Oldham County.",1
 chicago illinois is in what county,Cook,Cook County.,1
-is canola oil unhealthy,No,"According to the provided context, there is conflicting information about the healthiness of canola oil. Some sources, such as Katherine Zeratsky, R.D., L.D., state that canola oil is generally recognized as safe by the Food and Drug Administration and is a healthy choice due to its low levels of erucic acid and high proportion of monounsaturated fat. However, other sources, such as Darleen Bradley, claim that canola oil is a health hazard and not fit for human consumption. Therefore, it is difficult to make a definitive statement about the healthiness of canola oil.",1
-how many game of thrones books are there,Five books.,"According to the provided context, there are currently 5 published books in the A Song of Ice and Fire series, which is also known as the Game of Thrones series:
+is canola oil unhealthy,No,"According to the provided context, there is conflicting information about the healthiness of Canola oil. Some sources, such as Katherine Zeratsky, R.D., L.D., state that Canola oil is generally recognized as safe by the Food and Drug Administration and is a healthy choice due to its low levels of erucic acid and high proportion of monounsaturated fat. However, other sources, such as Darleen Bradley, claim that Canola oil is a health hazard and not fit for human consumption. Therefore, it is difficult to make a definitive conclusion about the healthiness of Canola oil.",0
+how many game of thrones books are there,Five books.,"According to the provided context, there are currently five published books in the A Song of Ice and Fire series, which is also known as the Game of Thrones series. These books are:
 
 1. A Game of Thrones
 2. A Clash of Kings
@@ -81,43 +79,32 @@ how many game of thrones books are there,Five books.,"According to the provided 
 4. A Feast for Crows
 5. A Dance with Dragons
 
-Additionally, there are plans for two more novels in the series, which have not been published yet. These two planned books are:
+Additionally, there are plans for two more novels in the series, which have not been published yet.",1
+the iran-contra,The Iran Contra Affair began as an internal U.S. confrontation between Ronald Reagan and the Democratic Congress.,The Iran-Contra Affair was a U.S. political scandal in the 1980s involving the National Security Council (NSC) and secret weapons transactions that violated the stated public policy of the government.,0
+what was the inqisitions all about,An organization in the Roman Catholic Church in the past that was responsible for finding and punishing people who did not accept its beliefs and practices.,"The Inquisition was not mentioned in the provided context. The text appears to be discussing the concept of civil disobedience and the difficulty in defining it. Therefore, I cannot provide an answer to this question as it is not relevant to the given context.",0
+what is a requirement traceability matrix,It is a document that links requirements throughout the validation process.,A Requirement Traceability Matrix (RTM) is a document that links requirements throughout the validation process. It ensures that all requirements defined for a system are tested in the test protocols and provides bi-directional traceability between various associated requirements.,1
+which birth control method reduces the risk of pregnancy and protects from sexually transmitted infections?,The male latex or polyurethane condom and female condom.,Condom.,1
+does nerve damage from chemo heal,Yes,Nerve damage from chemotherapy can be permanent and may not heal naturally.,1
+uso definition,"It is a nonprofit organization that provides programs, services and live entertainment to United States service members and their families.","USO can have multiple definitions depending on the context. Here are a few:
 
-6. The Winds of Winter
-7. A Dream of Spring
+* United Service Organizations (USO): a nonprofit organization that provides programs, services, and live entertainment to United States service members and their families.
+* Unidentified Submerged Object (USO): a term used to describe an underwater object whose nature or origin is unknown.
+* Unit Security Officer (USO): a person responsible for ensuring the security of a unit or organization.
+* Unix Software Organization (USO): a company that develops and provides Unix-based software solutions.
 
-So, in total, there will be 7 books in the series.",1
-the iran-contra,The Iran Contra Affair began as an internal U.S. confrontation between Ronald Reagan and the Democratic Congress.,The Iran-Contra Affair was a U.S. political scandal in the 1980s involving the National Security Council (NSC) and secret weapons transactions and activities that were either prohibited by Congress or violated the government's stated public policy.,1
-what was the inqisitions all about,An organization in the Roman Catholic Church in the past that was responsible for finding and punishing people who did not accept its beliefs and practices.,There is no mention of the Inquisition in the provided context. The text appears to be discussing the concept of civil disobedience and the difficulty of defining it.,0
-what is a requirement traceability matrix,It is a document that links requirements throughout the validation process.,A Requirement Traceability Matrix (RTM) is a document that links requirements throughout the validation process. It is used to track the requirements and ensure that all requirements defined for a system are tested in the test protocols.,1
-which birth control method reduces the risk of pregnancy and protects from sexually transmitted infections?,The male latex or polyurethane condom and female condom.,"According to the context, the best birth control method that reduces the risk of pregnancy and protects from sexually transmitted infections (STIs) is using two methods at the same time: a condom to protect against STIs, and a hormonal method (like the Pill) to prevent pregnancy.",1
-does nerve damage from chemo heal,Yes,"Nerve damage from chemotherapy can be permanent and may not heal completely. However, some cases may improve over time with proper treatment and management.",1
-uso definition,"It is a nonprofit organization that provides programs, services and live entertainment to United States service members and their families.","Based on the provided context, USO can have multiple definitions depending on the context. Here are some possible definitions:
-
-1. United Service Organizations (USO) - a nonprofit organization that provides programs, services, and live entertainment to United States service members and their families.
-2. Unidentified Submerged Object (USO) - a term used to describe an underwater object whose nature or origin is unknown.
-3. Unit Security Officer (USO) - a term used in some contexts to refer to a security officer responsible for a specific unit or area.
-4. Unix Software Organization (USO) - a term used to refer to an organization that develops or supports Unix-based software.
-
-Please note that these definitions are based on the provided context and may not be exhaustive.",1
+Please specify the context or provide more information to help me provide a more accurate definition.",1
 what is mass multiplied by acceleration,Force,Force.,1
-what is concasse,"Concasse is a cooking term meaning to rough chop any ingredient, usually vegetables.","Concasse is a cooking term that means to rough chop any ingredient, usually vegetables, particularly tomatoes.",1
-harriet beecher stowe birthday,"Harriett Beecher Stowe's birthday is on June 14, 1811.","Harriet Beecher Stowe's birthday is June 14, 1811.",1
-define language deprived,"It is associated with the lack of linguistic stimuli that are necessary for the language acquisition processes in an individual, usually in a very impoverished environment.","Based on the provided context, language deprivation refers to the lack of linguistic stimuli necessary for language acquisition processes in an individual, usually in a very impoverished environment.",1
+what is concasse,"Concasse is a cooking term meaning to rough chop any ingredient, usually vegetables.","Concasse is a culinary term that refers to the process of peeling and removing the seeds and membranes from tomatoes, typically to prepare them for cooking.",1
+harriet beecher stowe birthday,"Harriett Beecher Stowe's birthday is on June 14, 1811.","June 14, 1811",1
+define language deprived,"It is associated with the lack of linguistic stimuli that are necessary for the language acquisition processes in an individual, usually in a very impoverished environment.","Language deprivation refers to the lack of linguistic stimuli necessary for language acquisition, often occurring in a very impoverished environment.",1
 role clarity definition,Role clarity is what it is that is nursing’s alone to own as well as to define the role of each individual nurse in each domain of practice.,"Role clarity refers to the clear definition and understanding of a role, including its responsibilities, expectations, and scope of practice. It provides a sense of professional identity and enables individuals to understand their role within an organization or team.",1
-what does the name cull mean,Killing,"According to the provided context, the name Cull is derived from Old French origins and means to collect.",0
-can deadlifting make your joints sore,"Yes, Knees may be getting sore from deadlifts.","Yes, deadlifting can make your joints sore, especially if your form is not correct. Tight hamstrings and poor biomechanics can also contribute to soreness in the knees, hips, and lower back. However, when done correctly, deadlifting can actually help strengthen the joints and reduce pain.",1
-________ is typically formed by metamorphism of a sandstone.,Quartzite,Quartzite,1
-what is the meaning of impairment,"Any loss or abnormality of psychological, physiological or anatomical structure or function.","According to the provided context, impairment refers to ""any loss or abnormality of psychological, physiological or anatomical structure or function.""",1
+what does the name cull mean,Killing,"According to the context, the name Cull is derived from Old French origins and means to collect.",0
+can deadlifting make your joints sore,"Yes, Knees may be getting sore from deadlifts.","Yes, deadlifting can make your joints sore, especially your knees and lower back. However, proper form and execution can help reduce the risk of injury and soreness.",1
+________ is typically formed by metamorphism of a sandstone.,Quartzite,Quartzite.,1
+what is the meaning of impairment,"Any loss or abnormality of psychological, physiological or anatomical structure or function.","According to the context, impairment refers to ""any loss or abnormality of psychological, physiological or anatomical structure or function.""",1
 what time do spring semesters start,At the end of January.,"According to the context, spring semesters typically start at the end of January.",1
-can crl be used on fiberglass,"Yes, crl can be used on fiberglass.","Yes, CLR can be used on fiberglass.",1
-what is  the action of the  trapezius muscle to the scapula,"Moving, rotating, and stabilizing.","Based on the provided context, the trapezius muscle has the following actions on the scapula:
-
-* Elevates the scapula (lifts it upwards)
-* Rotates the scapula (moves it downwards and medially)
-* Depresses the scapula (pulls it downwards)
-
-These actions are mentioned in the context provided, specifically in the section ""Trapezius Muscle"" and ""Scapula Depression"".",1
+can crl be used on fiberglass,"Yes, crl can be used on fiberglass.","Yes, CLR can be used on fiberglass to remove calcium and lime deposits, surface rust stains, and soap scum.",1
+what is  the action of the  trapezius muscle to the scapula,"Moving, rotating, and stabilizing.","The trapezius muscle has several actions on the scapula. It elevates the scapula, which is the primary function of the muscle. Additionally, it also depresses the scapula, which is the action of the lower fibers of the trapezius muscle.",1
 oceanic crust is composed primarily of ________.,Basalts,Basalt.,1
 cast of hush,"Casts of Hush are Kate Siegel as Maddie,John Gallagher Jr. as Man, Michael Trucco as John, Samantha Sloyan as Sarah,Emilia Graves as Max.","The cast of Hush (2016 film) includes:
 
@@ -125,34 +112,43 @@ cast of hush,"Casts of Hush are Kate Siegel as Maddie,John Gallagher Jr. as Man,
 * John Gallagher Jr. as Man
 * Michael Trucco as John
 * Samantha Sloyan as Sarah
-* Emilia Emma Graves as Max",1
-what is the tennessee state tax in nashville,"7% of state sales tax,Depending on local municipalities, the total tax rate can be as high as 9.75%.","According to the context, Tennessee does not have a state income tax. However, Nashville and Tennessee have a state sales tax rate of 7.00%, and the total sales tax rate can be as high as 9.75% depending on local municipalities.",1
-starting salary of registered nurse,"$28,000-$50,000 per year","According to the Bureau of Labor Statistics, the median annual salary for registered nurses in the United States is around $76,840.",0
-average pulse rate for male adults,60 to 100 beats a minute.,The normal pulse rate for healthy adult males is between 60 and 100 beats per minute.,1
+* Emilia Graves as Max",1
+what is the tennessee state tax in nashville,"7% of state sales tax,Depending on local municipalities, the total tax rate can be as high as 9.75%.","According to the provided context, the state sales tax in Tennessee is 7.00%, and Nashville has a local option sales tax of up to 2.75%. Therefore, the total sales tax rate in Nashville is between 8.50% and 9.75%.",1
+starting salary of registered nurse,"$28,000-$50,000 per year","According to the context, the starting salary of a Registered Nurse can range from around $28,000-$50,000 per year on average.",1
+average pulse rate for male adults,60 to 100 beats a minute.,The average pulse rate for male adults is between 60 to 100 beats per minute.,1
 how dissolve pills faster,Some pills are completely water soluble and therefore would dissolve in water faster than other liquids which are a mixture of water with other compounds.,"To dissolve pills faster, you can try the following:
 
-* Take the pill with plain cold water.
-* Avoid taking the pill with milk or other food items in your stomach.
-* Consider taking the pill with hot water, as it may dissolve faster.
-* However, it's important to note that the effectiveness of these methods may vary depending on the type of pill and its ingredients.
+* Use plain cold water
+* Avoid taking pills with milk or other food items in your stomach
+* Avoid taking pills with hot water
+* Consider using a liquid that is specifically designed to help dissolve pills, such as a dissolvable tablet or a liquid that is designed to help break down pills.
 
-It's also important to note that the stomach's natural acidity and heat can help break down pills, so taking the pill with a glass of water may be sufficient.",1
+It's also important to note that the type of pill and the ingredients used to make it can affect how quickly it dissolves. Some pills are designed to dissolve quickly, while others may take longer.",1
 normal high temperatures des moines iowa,75A°,"According to the provided context, the average high temperature in Des Moines, Iowa is:
 
-* May: 75°F
-* July: 86°F
-* Average annual temperature: 61.0°F
+* January: 34°F (1.7°C)
+* February: 39°F (3.9°C)
+* March: 52°F (11.1°C)
+* April: 64°F (17.8°C)
+* May: 73°F (22.8°C)
+* June: 84°F (29°C)
+* July: 86°F (30°C)
+* August: 84°F (29°C)
+* September: 74°F (23.3°C)
+* October: 63°F (17.2°C)
+* November: 51°F (10.6°C)
+* December: 37°F (2.8°C)
 
-Please note that these values are based on the 1981-2010 normals.",1
-how many calories in fortune cookie,30 calories per one fortune cookie.,"According to the provided context, one fortune cookie contains 30 calories.",1
+Please note that these temperatures are based on the 1981-2010 normals.",0
+how many calories in fortune cookie,30 calories per one fortune cookie.,"According to the context, one fortune cookie contains 30 calories.",1
 what is a signature dish,A signature dish is a dish that is closely identified with a chef or a restaurant and stands out as a prime example of that person's or establishment's cuisine.,A signature dish is a dish that is closely identified with a chef or a restaurant and stands out as a prime example of that person's or establishment's cuisine.,1
-another name for joy stick,The control lever of an airplane.,Controller,0
-what does arm wing liposuction cost,"Between $1,500 and $5,000","According to the provided information, the cost of arm liposuction can range from $1,500 to $5,000, depending on the amount of fat to be removed and whether it's performed in a doctor's office under local anesthesia or in a hospital setting.",1
+another name for joy stick,The control lever of an airplane.,Controller.,0
+what does arm wing liposuction cost,"Between $1,500 and $5,000","According to the information provided, arm liposuction prices can run between $1,500 to $5,000, depending on the amount of fat to be removed.",1
 "how much does a police officer make in charleston, illinois","$34,000","According to the provided information, the average salary for a police officer in Charleston, SC is $28,000, which is 2% lower than the average salary for police officers nationwide.",0
 what is botdf,It was the only track from Blood on the Dance Floor.,"I apologize, but there is no information provided about ""botdf"" in the given context. Could you please provide more context or clarify what ""botdf"" refers to?",0
-Which name is also used to describe the Amazon rainforest in English?,"['also known in English as Amazonia or the Amazon Jungle,', 'Amazonia or the Amazon Jungle', 'Amazonia']","The Amazon rainforest is also known in English as ""Amazonia"" or the ""Amazon Jungle"".",1
-How many square kilometers of rainforest is covered in the basin?,"['5,500,000 square kilometres (2,100,000 sq mi) are covered by the rainforest.', '5,500,000', '5,500,000']","According to the context, 5,500,000 square kilometers (2,100,000 sq mi) of the Amazon rainforest are covered in the basin.",1
-How many nations control this region in total?,"['This region includes territory belonging to nine nations.', 'nine', 'nine']","According to the context, the region is controlled by 9 nations.",1
+Which name is also used to describe the Amazon rainforest in English?,"['also known in English as Amazonia or the Amazon Jungle,', 'Amazonia or the Amazon Jungle', 'Amazonia']",The Amazon rainforest is also known in English as Amazonia or the Amazon Jungle.,1
+How many square kilometers of rainforest is covered in the basin?,"['5,500,000 square kilometres (2,100,000 sq mi) are covered by the rainforest.', '5,500,000', '5,500,000']","According to the context, 5,500,000 square kilometers (2,100,000 sq mi) of the Amazon basin are covered by the rainforest.",1
+How many nations control this region in total?,"['This region includes territory belonging to nine nations.', 'nine', 'nine']",9,1
 "How many nations contain ""Amazonas"" in their names?","['States or departments in four nations contain ""Amazonas"" in their names.', 'four', 'four']","According to the context, four nations contain ""Amazonas"" in their names.",1
 What percentage does the Amazon represents in rainforests on the planet?,"[""The Amazon represents over half of the planet's remaining rainforests"", 'over half']",The Amazon represents over half of the planet's remaining rainforests.,1
 What is the Dutch word for the Amazon rainforest?,"['Amazoneregenwoud', 'Amazoneregenwoud', 'Amazoneregenwoud']","The Dutch word for the Amazon rainforest is ""Amazoneregenwoud"".",1
@@ -161,56 +157,56 @@ In what country can most of the Amazon rainforest be found?,"['Brazil', 'Brazil'
 The Amazon rainforest makes up what amount of Earth's rainforests?,"['over half', 'over half', 'over half']",The Amazon rainforest represents over half of the planet's remaining rainforests.,1
 How many species of trees can be found in the Amazon rainforest?,"['16,000', '16,000', '16,000']","According to the context, there are 16,000 species of trees in the Amazon rainforest.",1
 What kind of forest is the Amazon rainforest?,"['moist broadleaf forest', 'moist broadleaf forest', 'tropical']",The Amazon rainforest is a moist broadleaf forest.,1
-How many square kilometers is the Amazon Basin?,"['7,000,000 square kilometres (2,70', '7,000,000', '7,000,000 square kilometres']","The Amazon Basin is 7,000,000 square kilometers (2,700,000 sq mi).",1
-How many nations are within the Amazon Basin?,"['nine nations', 'nine', 'nine']","According to the context, the Amazon Basin includes territory belonging to nine nations.",1
-Which nation contains the majority of the amazon forest?,"['Brazil', 'Brazil', 'Brazil']","Brazil contains the majority of the Amazon forest, with 60% of the rainforest.",1
-Which Florida city has the biggest population?,"['Jacksonville', 'Jacksonville', 'Jacksonville']",Jacksonville is the largest city by population in the U.S. state of Florida.,1
-What was the population Jacksonville city as of 2010?,"['1,345,596', '1,345,596', '1,345,596']","According to the context, the population of Jacksonville city as of 2010 was 1,345,596.",1
-"Based on population alone, what is Jacksonville's ranking in the United States?","['12th', '12th', '12th']","According to the context, Jacksonville is the 12th most populous city in the United States based on population alone.",1
-In which county does Jacksonville reside?,"['Duval', 'Duval County', 'Duval County']",Jacksonville is the county seat of Duval County.,1
+How many square kilometers is the Amazon Basin?,"['7,000,000 square kilometres (2,70', '7,000,000', '7,000,000 square kilometres']","The Amazon Basin is approximately 7,000,000 square kilometers (2,700,000 sq mi).",1
+How many nations are within the Amazon Basin?,"['nine nations', 'nine', 'nine']",Nine nations.,1
+Which nation contains the majority of the amazon forest?,"['Brazil', 'Brazil', 'Brazil']",Brazil.,1
+Which Florida city has the biggest population?,"['Jacksonville', 'Jacksonville', 'Jacksonville']",Jacksonville.,1
+What was the population Jacksonville city as of 2010?,"['1,345,596', '1,345,596', '1,345,596']","1,345,596",1
+"Based on population alone, what is Jacksonville's ranking in the United States?","['12th', '12th', '12th']","According to the context, Jacksonville is the 12th most populous city in the United States.",1
+In which county does Jacksonville reside?,"['Duval', 'Duval County', 'Duval County']",Duval County,1
 What year did consolidation cause Jacksonville to become part of Duval County?,"['1968', '1968', '1968']",1968,1
-When did the 1973 oil crisis begin?,"['October 1973', 'October 1973', 'October 1973', 'October', '1973']",The 1973 oil crisis began in October 1973.,1
-What was the price of oil in March of 1974?,"['nearly $12', '$12', '$12', '$12', '$12']","According to the context, the price of oil had risen from US$3 per barrel to nearly $12 globally by the end of the embargo in March 1974.",1
+When did the 1973 oil crisis begin?,"['October 1973', 'October 1973', 'October 1973', 'October', '1973']",October 1973.,1
+What was the price of oil in March of 1974?,"['nearly $12', '$12', '$12', '$12', '$12']","According to the context, the price of oil had risen to nearly $12 per barrel by the end of the embargo in March 1974.",1
 When was the second oil crisis?,"['1979', '1979', '1979', '1979', '1979']","The second oil crisis, also known as the ""second oil shock"", occurred in 1979.",1
-What was another term used for the oil crisis?,"['first oil shock', 'shock', 'shock', 'first oil shock', 'shock']","The other term used for the oil crisis was ""oil shock"".",1
+What was another term used for the oil crisis?,"['first oil shock', 'shock', 'shock', 'first oil shock', 'shock']","The oil crisis was also referred to as the ""first oil shock"", followed by the 1979 oil crisis, termed the ""second oil shock"".",1
 Who proclaimed the oil embargo?,"['members of the Organization of Arab Petroleum Exporting Countries', 'members of the Organization of Arab Petroleum Exporting Countries', 'Organization of Arab Petroleum Exporting Countries', 'members of the Organization of Arab Petroleum Exporting Countries', 'OAPEC']","The members of the Organization of Arab Petroleum Exporting Countries (OAPEC), consisting of the Arab members of OPEC plus Egypt and Syria, proclaimed the oil embargo.",1
-Who provides the bill of quantities?,"['a quantity surveyor', 'quantity surveyor', 'quantity surveyor']",The bill of quantities is typically provided by the quantity surveyor.,1
+Who provides the bill of quantities?,"['a quantity surveyor', 'quantity surveyor', 'quantity surveyor']",The contractor provides the bill of quantities.,1
 The owner typically awards a contract to who?,"['the most cost efficient bidder', 'the most cost efficient bidder', 'most cost efficient bidder']",The owner typically awards a contract to the most cost-efficient bidder.,1
 What process do moderate and reformist Islamists work within the boundaries of?,"['democratic', 'democratic process', 'democratic']","According to the context, moderate and reformist Islamists work within the democratic process.",1
-What is Southern California often abbreviated as?,"['SoCal', 'SoCal', 'SoCal']",Southern California is often abbreviated as SoCal.,1
+What is Southern California often abbreviated as?,"['SoCal', 'SoCal', 'SoCal']",SoCal.,1
 "Despite being traditionall described as ""eight counties"", how many counties does this region actually have?","['10 counties', '10', '10']","According to the context, Southern California is actually described as having 10 counties, including Kern and San Luis Obispo counties, in addition to the traditional ""eight counties"" of Imperial, Los Angeles, Orange, Riverside, San Bernardino, San Diego, Santa Barbara, and Ventura.",1
-What is a major importance of Southern California in relation to California and the United States?,"['economic center', 'major economic center', 'economic center']",A major importance of Southern California in relation to California and the United States is that it is a major economic center for the state of California and the United States.,1
-"What are the ties that best described what the ""eight counties"" are based on?","['demographics and economic ties', 'economic', 'demographics and economic']","Based on the provided context, the ties that best described what the ""eight counties"" are based on are historical political divisions.",1
+What is a major importance of Southern California in relation to California and the United States?,"['economic center', 'major economic center', 'economic center']",A major economic center for the state of California and the United States.,1
+"What are the ties that best described what the ""eight counties"" are based on?","['demographics and economic ties', 'economic', 'demographics and economic']",Historical political divisions.,0
 The reasons for the las two counties to be added are based on what?,"['historical political divisions', 'historical political divisions', 'historical political divisions']",Historical political divisions.,1
-Who is the chair of the IPCC?,"['Hoesung Lee', 'Hoesung Lee', 'Hoesung Lee']","Korean economist Hoesung Lee is the chair of the IPCC since October 8, 2015.",1
-What nationality is Hoesung Lee?,"['Korean', 'onomist', 'Korean']",I couldn't find any information about Hoesung Lee's nationality in the provided context.,0
-Who is the vice-chair of the IPCC?,"['Ismail El Gizouli', 'Ismail El Gizouli', 'Ismail El Gizouli']","The text does not mention the specific vice-chair of the IPCC. It only mentions Ismail El Gizouli as the acting Chair after Rajendra K. Pachauri's resignation, but it does not specify if he was the vice-chair or not.",1
-Who was the first chair of the IPCC?,"['Bert Bolin', 'Bert Bolin', 'Bert Bolin']","The information provided does not mention the first chair of the IPCC. The text only discusses the composition of the IPCC Panel and the attendance at a 2003 meeting, but it does not mention the chair of the IPCC.",0
+Who is the chair of the IPCC?,"['Hoesung Lee', 'Hoesung Lee', 'Hoesung Lee']",Korean economist Hoesung Lee.,
+What nationality is Hoesung Lee?,"['Korean', 'onomist', 'Korean']","I'm happy to help! Based on the provided context, I couldn't find any information about Hoesung Lee's nationality. Could you please provide more context or clarify who Hoesung Lee is?",0
+Who is the vice-chair of the IPCC?,"['Ismail El Gizouli', 'Ismail El Gizouli', 'Ismail El Gizouli']","According to the context, Ismail El Gizouli was the vice-chair of the IPCC before Hoesung Lee took over as the chair.",1
+Who was the first chair of the IPCC?,"['Bert Bolin', 'Bert Bolin', 'Bert Bolin']","Unfortunately, the provided context does not mention the first chair of the IPCC. The context only discusses the composition of the IPCC Panel and the attendance at a meeting in 2003, but it does not provide information about the chair of the IPCC.",0
 When did Pachauri resign as chair of the IPCC?,"['February 2015', 'February 2015', 'February 2015']",Feb-15,1
 What is a mechanical barrier in insects that protects the insect?,"['exoskeleton', 'exoskeleton', 'exoskeleton']",The exoskeleton of insects is a mechanical barrier that protects the insect.,1
-Who is on the IPCC Panel?,"['representatives appointed by governments and organizations', 'representatives appointed by governments and organizations', 'representatives appointed by governments and organizations']","The IPCC Panel is composed of representatives appointed by governments and organizations, with participation of delegates with appropriate expertise encouraged.",1
-How many people attended the 2003 IPCC meeting?,"['350', '350', '350']","According to the context, 350 government officials and climate change experts attended the 2003 meeting.",1
-How much of the IPCC attendees are government representatives?,"['about seven-eighths', 'seven-eighths', 'about seven-eighths']","According to the meeting report, about seven-eighths of the participants (approximately 7/8) were from governmental organizations.",1
+Who is on the IPCC Panel?,"['representatives appointed by governments and organizations', 'representatives appointed by governments and organizations', 'representatives appointed by governments and organizations']","Representatives appointed by governments and organizations, as well as delegates with appropriate expertise, are on the IPCC Panel.",1
+How many people attended the 2003 IPCC meeting?,"['350', '350', '350']","According to the text, 350 government officials and climate change experts attended the 2003 meeting.",1
+How much of the IPCC attendees are government representatives?,"['about seven-eighths', 'seven-eighths', 'about seven-eighths']","About seven-eighths of the participants, which is approximately 7/8 or 0.875, were from governmental organizations.",1
 "In a computational problem, what can be described as a string over an alphabet?","['problem instance', 'a problem instance', 'problem instance']",A problem instance can be described as a string over an alphabet.,1
-What is the name of the alphabet is most commonly used in a problem instance?,"['binary alphabet', 'binary', 'binary']","The name of the alphabet most commonly used in a problem instance is the binary alphabet, which is the set {0,1}.",1
-What is another term for the string of a problem instance?,"['bitstrings', 'bitstrings', 'bitstrings']","Based on the provided context, another term for the string of a problem instance is a ""bitstring"".",1
+What is the name of the alphabet is most commonly used in a problem instance?,"['binary alphabet', 'binary', 'binary']","The binary alphabet, which is the set {0,1}.",1
+What is another term for the string of a problem instance?,"['bitstrings', 'bitstrings', 'bitstrings']",A bitstring.,1
 "In the encoding of mathematical objects, what is the way in which integers are commonly expressed?","['binary notation', 'binary notation', 'binary notation']","In the encoding of mathematical objects, integers are commonly expressed in binary notation.",1
-What is one way in which graphs can be encoded? ,"['adjacency matrices', 'directly via their adjacency matrices']",One way in which graphs can be encoded is by encoding their adjacency matrices in binary.,1
-Who wrote that it is difficult to produce an all inclusive definition of civil disobedience?,"['LeGrande', 'LeGrande', 'LeGrande', 'LeGrande', 'LeGrande']","LeGrande wrote that it is extremely difficult, if not impossible, to produce an all-inclusive definition of the term ""civil disobedience"".",1
+What is one way in which graphs can be encoded? ,"['adjacency matrices', 'directly via their adjacency matrices']",One way to encode graphs is by using their adjacency matrices in binary.,1
+Who wrote that it is difficult to produce an all inclusive definition of civil disobedience?,"['LeGrande', 'LeGrande', 'LeGrande', 'LeGrande', 'LeGrande']","LeGrande wrote that it is extremely difficult, if not impossible, to formulate a single all-encompassing definition of the term ""civil disobedience"".",1
 Le Grande also wrote that defining the term civil disobedience so difficult it could be described as? ,"['impossible', 'a maze of semantical problems and grammatical niceties', 'impossible', 'impossible']","""extremely difficult, if not impossible"".",1
-Le grand asks for a variance of what three terms?,"['lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience', 'lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience', 'lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience', 'lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience', 'lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience']","According to the context, LeGrande does not ask for a variance of three terms. Instead, he mentions that ""the formulation of a single all-encompassing definition of the term [civil disobedience] is extremely difficult, if not impossible.""",1
-Le grand states that students studying civil disobedience will often run into grammatical niceties and what other problem? ,"['semantical', 'semantical', 'a maze of semantical problems', 'semantical', 'semantical problems']","According to the context, LeGrande states that students studying civil disobedience will often run into a ""maze of semantical problems"" in addition to grammatical niceties.",1
-Le grand concludes that an author's words offer only what they intended for them to imply regarding this type of terminology?,"['specific', 'civil disobedience', 'specific', 'specific']","According to the context, LeGrande suggests that specific terminology has no more (or no less) meaning than the individual orator intends it to have, implying that an author's words offer only what they intended for them to imply regarding this type of terminology.",1
-Who said that writing a good description of civil disobedience is hard?,"['LeGrande', 'LeGrande', 'LeGrande', 'LeGrande', 'LeGrande']",LeGrande said that writing a good description of civil disobedience is hard.,1
-How much literature has been written regarding civil disobedience?,"['voluminous literature', 'voluminous', 'voluminous', 'voluminous']","According to the text, the student of civil disobedience ""rapidly finds himself surrounded by a maze of semantical problems and grammatical niceties"" while reviewing the ""voluminous literature"" on the subject. This implies that a significant amount of literature has been written regarding civil disobedience.",1
-What issue plagues the literature about civil disobedience?,"['semantical problems and grammatical niceties', 'maze of semantical problems and grammatical niceties', 'semantical problems and grammatical niceties', 'semantical problems and grammatical niceties']","According to the text, the issue that plagues the literature about civil disobedience is the ambiguity and lack of a clear definition, making it difficult to formulate a single all-encompassing definition.",0
-What type of protest falls under civil disobedience without aggression?,"['nonviolent civil disobedience', 'nonviolent civil disobedience', 'nonviolent', 'nonviolent', 'nonviolent']","According to the context, nonviolent civil disobedience falls under civil disobedience without aggression.",1
+Le grand asks for a variance of what three terms?,"['lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience', 'lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience', 'lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience', 'lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience', 'lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience']","LeGrande asks for a variance of definitions of the term ""civil disobedience"".",1
+Le grand states that students studying civil disobedience will often run into grammatical niceties and what other problem? ,"['semantical', 'semantical', 'a maze of semantical problems', 'semantical', 'semantical problems']",semantical problems,1
+Le grand concludes that an author's words offer only what they intended for them to imply regarding this type of terminology?,"['specific', 'civil disobedience', 'specific', 'specific']","According to LeGrande, an author's words offer only what they intend for them to imply regarding the terminology of civil disobedience, meaning that the meaning is subjective and dependent on the individual orator's intention.",1
+Who said that writing a good description of civil disobedience is hard?,"['LeGrande', 'LeGrande', 'LeGrande', 'LeGrande', 'LeGrande']",LeGrande.,1
+How much literature has been written regarding civil disobedience?,"['voluminous literature', 'voluminous', 'voluminous', 'voluminous']","According to the text, the literature on civil disobedience is ""voluminous"".",1
+What issue plagues the literature about civil disobedience?,"['semantical problems and grammatical niceties', 'maze of semantical problems and grammatical niceties', 'semantical problems and grammatical niceties', 'semantical problems and grammatical niceties']","According to LeGrande, the issue plaguing the literature about civil disobedience is the difficulty in formulating a single, all-encompassing definition of the term due to semantical problems and grammatical niceties.",1
+What type of protest falls under civil disobedience without aggression?,"['nonviolent civil disobedience', 'nonviolent civil disobedience', 'nonviolent', 'nonviolent', 'nonviolent']",Nonviolent civil disobedience.,1
 What type of civil disobedience is accompanied by aggression?,"['violent civil disobedience', 'violent civil disobedience', 'violent', 'violent', 'violent']","According to the text, violent civil disobedience is accompanied by aggression.",1
-What president eliminated the Christian position in the curriculum?,"['Charles W. Eliot', 'Charles W. Eliot', 'Charles W. Eliot']","Charles W. Eliot, president of Harvard University from 1869 to 1909, eliminated the favored position of Christianity from the curriculum.",1
-What conviction motivated Eliot to move towards secularization?,"['Transcendentalist Unitarian', 'Transcendentalist Unitarian', 'Transcendentalist Unitarian']","According to the context, Charles W. Eliot's conviction motivated by Transcendentalist Unitarian convictions, specifically the dignity and worth of human nature, the right and ability of each person to perceive truth, and the indwelling God in each person.",1
+What president eliminated the Christian position in the curriculum?,"['Charles W. Eliot', 'Charles W. Eliot', 'Charles W. Eliot']","Charles W. Eliot, president from 1869-1909, eliminated the favored position of Christianity from the curriculum.",1
+What conviction motivated Eliot to move towards secularization?,"['Transcendentalist Unitarian', 'Transcendentalist Unitarian', 'Transcendentalist Unitarian']","Transcendentalist Unitarian convictions, specifically the dignity and worth of human nature, the right and ability of each person to perceive truth, and the indwelling God in each person.",1
 From whom were the movement that Eliot followed derived?,"['William Ellery Channing and Ralph Waldo Emerson', 'William Ellery Channing and Ralph Waldo Emerson', 'William Ellery Channing and Ralph Waldo Emerson']",The movement that Ellie followed was derived from William Ellery Channing and Ralph Waldo Emerson.,1
 Vice President Agnew describes Civil disobedience in what activities?,"['muggers, arsonists, draft evaders, campaign hecklers, campus militants, anti-war demonstrators, juvenile delinquents and political assassins', 'civil disobedience', 'muggers, arsonists, draft evaders, campaign hecklers, campus militants, anti-war demonstrators, juvenile delinquents and political assassins', 'muggers, arsonists, draft evaders, campaign hecklers, campus militants, anti-war demonstrators, juvenile delinquents and political assassins', 'activities of muggers, arsonists, draft evaders, campaign hecklers, campus militants, anti-war demonstrators, juvenile delinquents and political assassins']","Vice President Agnew describes civil disobedience in activities such as muggers, arsonists, draft evaders, campaign hecklers, campus militants, anti-war demonstrators, juvenile delinquents, and political assassins.",1
-Civil disobedience has been argued in more recent times to have suffered from what?,"['ambiguity', 'debased', 'ambiguity', 'ambiguity', 'ambiguity']",Ambiguity and utter debasement.,1
-What person argues that civil disobedience is used to describe everything?,"['Marshall Cohen', 'Marshall Cohen', 'Marshall Cohen', 'Marshall Cohen', 'Marshall Cohen']","Marshall Cohen argues that the term ""civil disobedience"" has been used to describe everything.",1
-"In modern times, what is said about civil disobedience?","['become utterly debased', 'utterly debased', 'in modern times, become utterly debased', 'become utterly debased', 'become utterly debased']","According to the text, in modern times, the term ""civil disobedience"" has become utterly debased and has been used to describe a wide range of actions, from bringing a test-case in federal courts to taking aim at a federal official.",1
-Who gave a negative connotation to civil disobedience in recent history?,"['Vice President Agnew', 'Vice President Agnew', 'Vice President Agnew', 'Vice President Agnew', 'Marshall Cohen']","According to the context, it is not explicitly stated that someone gave a negative connotation to civil disobedience in recent history. Instead, the text highlights the ambiguity and difficulty in defining civil disobedience, with Marshall Cohen and LeGrande noting the term's broad and unclear usage.",0
+Civil disobedience has been argued in more recent times to have suffered from what?,"['ambiguity', 'debased', 'ambiguity', 'ambiguity', 'ambiguity']",Ambiguity.,1
+What person argues that civil disobedience is used to describe everything?,"['Marshall Cohen', 'Marshall Cohen', 'Marshall Cohen', 'Marshall Cohen', 'Marshall Cohen']",Marshall Cohen.,1
+"In modern times, what is said about civil disobedience?","['become utterly debased', 'utterly debased', 'in modern times, become utterly debased', 'become utterly debased', 'become utterly debased']","According to the text, in modern times, the term ""civil disobedience"" has become utterly debased and has been used to describe a wide range of actions, making it difficult to define.",1
+Who gave a negative connotation to civil disobedience in recent history?,"['Vice President Agnew', 'Vice President Agnew', 'Vice President Agnew', 'Vice President Agnew', 'Marshall Cohen']","According to the context, Marshall Cohen is the one who notes that the term ""civil disobedience"" has been used to describe everything from bringing a test-case in the federal courts to taking aim at a federal official, giving a negative connotation to the term in recent history.",1
