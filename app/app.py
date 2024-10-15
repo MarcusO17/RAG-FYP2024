@@ -8,6 +8,7 @@ from groq import Groq
 from groqllm import GroqLLM
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
+
 #Chunking
 from llama_index.core.node_parser import SentenceSplitter
 
@@ -20,17 +21,21 @@ import chromadb
 
 
 def upload_file(file):
-    #UPLOAD_PATH = "./docs"
-    #if os.path.exists(UPLOAD_PATH) is not True:
-        #os.mkdir(UPLOAD_PATH)
-    #shutil.copy(file, UPLOAD_PATH)
+    UPLOAD_PATH = "./docs"
+    if os.path.exists(UPLOAD_PATH) is not True:
+        os.mkdir(UPLOAD_PATH)
+    shutil.copy(file, UPLOAD_PATH)
     gr.Info('Successful!!')
-    load_documents(file)
-
-
+    return 
 
 
 def load_documents(file):
+    global index
+    global query_engine
+
+    file = SimpleDirectoryReader(input_dir="./docs").load_data()
+    print(file)
+    
     pipeline = IngestionPipeline(
         transformations=[
             #Splits chunks to 512 with 50 overlap
@@ -38,35 +43,32 @@ def load_documents(file):
         ],
         vector_store=vector_store,
     )
-
-    documents = pipeline.run(file)
-    gr.Info('Loading File')
-
-    index = VectorStoreIndex(documents, storage_context=storage_context,similarity_top_k=5) 
+    documents = file
+    index = VectorStoreIndex(documents, storage_context=storage_context,similarity_top_k=5,show_progress=True) 
     gr.Info('Constructed Index')
-    query_engine = index.as_query_engine(streaming=True,similarity_top_k=3)
+    query_engine = index.as_query_engine(similarity_top_k=3)
     gr.Info('Constructed Query Engine')
 
 
+
 def respond(message,history):
-    response = query_engine.query()
-    response.print_response_stream()
+    response = query_engine.query(message)
+    history.append({"role": "user", "content": message})
+    history.append({"role": "assistant", "content": response.response})
+    return history
 
 
 load_dotenv()
 
-global llm 
-global index
-global query_engine
 
 llm = GroqLLM(model_name = "llama3-8b-8192"
             ,client =Groq(api_key=os.getenv("GROQ_API_KEY"))
-            ,temperature =0.0
+            ,temperature =1.0
             ,system_prompt = ("""
 Instructions:
 - You are a helpful assistant
 Question: {query_str}
-"""))
+"""),output_tokens=1024)
 
 embed_model = HuggingFaceEmbedding(model_name='Snowflake/snowflake-arctic-embed-m' 
                                    ,trust_remote_code=True
@@ -91,16 +93,18 @@ with gr.Blocks() as demo:
     with gr.Row():
         # Chat Interface
         with gr.Column(scale=1.2,min_width=100):
-            with gr.Tab(label='RAG Chatbot'):
-                chatbot = gr.Chatbot(type="messages")
-                msg = gr.Textbox()
-                msg.submit(respond, [msg, chatbot], [chatbot])
-                
             with gr.Tab(label='File Input'):
                 upload_button = gr.UploadButton("Click to Upload a File", file_types=['.pdf','.txt','.doc'])
                 upload_button.upload(upload_file,upload_button)
                 load_btn = gr.Button("Load PDF Documents only")
                 load_btn.click(load_documents)
+
+            with gr.Tab(label='RAG Chatbot'):
+                chatbot = gr.Chatbot(type="messages")
+                msg = gr.Textbox()
+                msg.submit(respond, [msg, chatbot], [chatbot])
+                
+            
 
 
         # Show Nodes
@@ -111,5 +115,5 @@ with gr.Blocks() as demo:
 
 
 
-demo.queue().launch()
+demo.queue().launch(debug=True)
 
