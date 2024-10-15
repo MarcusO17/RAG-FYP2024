@@ -35,8 +35,9 @@ class GroqLLM(CustomLLM):
     system_prompt : str = "you are a helpful assistant."
 
     def __init__(self, **params):
+        # Unpack parameters into parent class
         super().__init__(**params)
-        self.client = params.get("client", None)
+        self.client = params.get("client", None) #init Groq Client with API KEY
         self.system_prompt = params.get("system_prompt", "you are a helpful assistant.")
 
     @property
