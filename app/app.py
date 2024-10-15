@@ -29,12 +29,11 @@ def upload_file(file):
     return 
 
 
-def load_documents(file):
+def load_documents(file,progress=gr.Progress()):
     global index
     global query_engine
 
-    file = SimpleDirectoryReader(input_dir="./docs").load_data()
-    print(file)
+    files = SimpleDirectoryReader(input_dir="./docs").load_data()
     
     pipeline = IngestionPipeline(
         transformations=[
@@ -43,13 +42,16 @@ def load_documents(file):
         ],
         vector_store=vector_store,
     )
-    documents = file
+    documents = pipeline.run(documents=files)
+    gr.Info('Splitted')
+    print(documents)
     index = VectorStoreIndex(documents, storage_context=storage_context,similarity_top_k=5,show_progress=True) 
     gr.Info('Constructed Index')
     query_engine = index.as_query_engine(similarity_top_k=3)
     gr.Info('Constructed Query Engine')
 
-
+def clear_history():
+    return [] 
 
 def respond(message,history):
     response = query_engine.query(message)
@@ -70,7 +72,7 @@ Instructions:
 Question: {query_str}
 """),output_tokens=1024)
 
-embed_model = HuggingFaceEmbedding(model_name='Snowflake/snowflake-arctic-embed-m' 
+embed_model = HuggingFaceEmbedding(model_name='Snowflake/snowflake-arctic-embed-s' 
                                    ,trust_remote_code=True
                                    )
 
@@ -103,7 +105,8 @@ with gr.Blocks() as demo:
                 chatbot = gr.Chatbot(type="messages")
                 msg = gr.Textbox()
                 msg.submit(respond, [msg, chatbot], [chatbot])
-                
+                clear_button = gr.Button("Clear History")
+                clear_button.click(clear_history, outputs=chatbot)
             
 
 
