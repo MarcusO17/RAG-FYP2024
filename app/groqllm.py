@@ -1,4 +1,4 @@
-from typing import Optional, Any
+from typing import Optional, Any, List
 from groq import Groq
 from llama_index.core.llms import (
     CustomLLM,
@@ -31,7 +31,7 @@ class GroqLLM(CustomLLM):
     #Only recommended to change either one but NOT BOTH                  
     top_p: float = 1.0
     temperature: float = 1.0
-    tools: Optional[Any]
+    tools: List[str] = []
     system_prompt : str = "you are a helpful assistant."
 
     def __init__(self, **params):

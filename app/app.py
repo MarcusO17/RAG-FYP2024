@@ -3,6 +3,10 @@ import gradio as gr
 import shutil
 import os
 
+from dotenv import load_dotenv
+from groq import Groq
+from groqllm import GroqLLM
+
 def upload_file(file):
     UPLOAD_PATH = "./docs"
     if os.path.exists(UPLOAD_PATH) is not True:
@@ -24,6 +28,25 @@ def list_files():
     except Exception as e:
         return [[f"Error: {str(e)}", ""]]
 
+def respond(message, history):
+    response = llm.complete(message)
+    history.append({"role": "user", "content": message})
+    history.append({"role": "assistant", "content": response.text})
+    return history
+
+
+load_dotenv()
+
+global llm 
+llm = GroqLLM(model_name = "llama3-8b-8192"
+            ,client =Groq(api_key=os.getenv("GROQ_API_KEY"))
+            ,temperature =0.1
+            ,system_prompt = ("""
+Instructions:
+- You are a helpful assistant
+Question: {query_str}
+"""))
+
 with gr.Blocks() as demo:
     with gr.Row():
         gr.Markdown(
@@ -37,7 +60,8 @@ with gr.Blocks() as demo:
             with gr.Tab(label='RAG Chatbot'):
                 chatbot = gr.Chatbot(type="messages")
                 msg = gr.Textbox()
-                clear = gr.ClearButton([msg, chatbot])
+                msg.submit(respond, [msg, chatbot], [chatbot])
+                
             with gr.Tab(label='File Input'):
                 upload_button = gr.UploadButton("Click to Upload a File", file_types=['.pdf','.txt','.doc'])
                 upload_button.upload(upload_file,upload_button)
@@ -52,3 +76,4 @@ with gr.Blocks() as demo:
 
 
 demo.launch()
+
