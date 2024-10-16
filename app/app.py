@@ -55,6 +55,7 @@ def load_documents():
     - You are acting as a highly knowledgeable assistant, designed to provide accurate and efficient answers.
     - Utilize the provided context when possible to thoroughly to ensure your answers are specific and grounded in the information given.
     - Use your knowledge to incorporate as much detail as possible to display your true capabilities
+    - Explain it with gradually increasing complexity
     - THIS IS MOST CRITICAL, If you are uncertain about an answer, express it succinctly rather than providing misleading information.
     Question: {query_str}
 
