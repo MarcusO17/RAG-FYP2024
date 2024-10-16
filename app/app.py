@@ -41,7 +41,7 @@ def load_documents():
     pipeline = IngestionPipeline(
         transformations=[
             #Splits chunks to 512 with 50 overlap
-            SentenceSplitter(chunk_size=512, chunk_overlap=50), 
+            SentenceSplitter(chunk_size=128, chunk_overlap=20), 
         ],
         vector_store=vector_store,
     )
