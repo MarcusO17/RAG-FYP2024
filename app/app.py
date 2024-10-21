@@ -8,10 +8,13 @@ from groq import Groq
 from groqllm import GroqLLM
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 import pandas as pd
+from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReranker
+from sklearn.decomposition import PCA
+import plotly.express as px
 
 
 #Chunking
-from llama_index.core.node_parser import SentenceSplitter
+from llama_index.core.node_parser import  SemanticSplitterNodeParser
 
 #VectorStorage
 from llama_index.vector_stores.chroma import ChromaVectorStore
@@ -29,25 +32,30 @@ def upload_file(file):
         os.mkdir(UPLOAD_PATH)
     shutil.copy(file, UPLOAD_PATH)
     gr.Info('Successful!!')
-    return 
+    return get_file_list()
 
 
 def load_documents():
     global index
     global query_engine
+    query_engine = None
 
+    print('Loading Documents')
     files = SimpleDirectoryReader(input_dir="./docs").load_data()
-    
+
     pipeline = IngestionPipeline(
         transformations=[
-            #Splits chunks to 512 with 50 overlap
-            SentenceSplitter(chunk_size=128, chunk_overlap=20), 
+            SemanticSplitterNodeParser(
+            buffer_size=1, breakpoint_percentile_threshold=95, embed_model=embed_model, show_progress=True
+        )
         ],
         vector_store=vector_store,
     )
     documents = pipeline.run(documents=files)
-    index = VectorStoreIndex(documents, storage_context=storage_context,similarity_top_k=10 ,show_progress=True) 
+    
+    index = VectorStoreIndex(documents, storage_context=storage_context,similarity_top_k=10 ,node_postprocessors=[reranker_model],show_progress=True)
     gr.Info('Constructed Index')
+
     query_engine = index.as_query_engine(similarity_top_k=5)
     qa_prompt_template_str = """
      Context: {context_str}
@@ -66,8 +74,16 @@ def load_documents():
     )
     gr.Info('Constructed Query Engine')
 
+    fig = get_embedding_space()
+    fig.update_scenes(xaxis_visible=False, yaxis_visible=False,zaxis_visible=False)
+    
+    return fig
+
 def clear_history():
-    return [] 
+    return []
+
+def get_file_list():
+    return os.listdir('./docs')
 
 def respond(message,history):
     global response
@@ -86,35 +102,52 @@ def respond(message,history):
     return history
 
 def update_source():
-    source_nodes = response.source_nodes  
-    formatted_sources = []
+    try:   
+        source_nodes = response.source_nodes
+    
+        formatted_sources = []
 
-    for nodes in source_nodes:
-        node = nodes.node  
-        score = nodes.score  
-        node_id = node.id_
-        text = node.text
-      
-        formatted_sources.append({
-            "NodeID": node_id,
-            "Text": text,
-            "Score": score
-        })
+        for nodes in source_nodes:
+            node = nodes.node
+            score = nodes.score
+            doc_name = nodes.file_name
+            text = node.text
 
-    return pd.DataFrame(formatted_sources)
+            formatted_sources.append({
+                "Document": doc_name,
+                "Text": text,
+                "Score": score
+            })
 
+        return pd.DataFrame(formatted_sources)
+    except:
+        return pd.DataFrame(columns=["NodeID","Text","Score"])
+
+def get_embedding_space():
+    pca = PCA(n_components=3)
+    embeddings = chroma_collection.get(include=['embeddings'])
+
+    if embeddings and len(embeddings['embeddings']) > 0:
+        emb_transform = pca.fit_transform(embeddings['embeddings'])
+        fig = px.scatter_3d(
+            x=emb_transform[:, 0],
+            y=emb_transform[:, 1],
+            z=emb_transform[:, 2],
+        )
+        return fig
+    else:
+        return px.scatter_3d(title="Knowledge Base Empty")
 
 load_dotenv()
 
-
 llm = GroqLLM(model_name = "llama3-8b-8192"
-            ,client =Groq(api_key=os.getenv("GROQ_API_KEY"))
+            ,client =Groq(api_key=os.environ.get('GROQ_API_KEY'))
             ,temperature =1.0
             ,output_tokens=1024)
 
-embed_model = HuggingFaceEmbedding(model_name='Snowflake/snowflake-arctic-embed-m' 
-                                   ,trust_remote_code=True
-                                   )
+embed_model = HuggingFaceEmbedding(model_name='Snowflake/snowflake-arctic-embed-m'
+                                   ,trust_remote_code=True,
+                                    device="cuda")
 
 db = chromadb.EphemeralClient() #Makes a temporary client which is not on disk
 chroma_collection = db.get_or_create_collection("temp")
@@ -123,7 +156,7 @@ vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
 storage_context = StorageContext.from_defaults(vector_store=vector_store)
 Settings.llm = llm
 Settings.embed_model = embed_model
-
+reranker_model = FlagEmbeddingReranker(model="mixedbread-ai/mxbai-embed-large-v1", top_n=5)
 
 with gr.Blocks(gr.themes.Soft()) as demo:
     with gr.Row():
@@ -134,35 +167,31 @@ with gr.Blocks(gr.themes.Soft()) as demo:
         )
     with gr.Row():
         # Chat Interface
-        with gr.Column(scale=1.2,min_width=100):
-            with gr.Tab(label='File Input'):
+        with gr.Column(scale=3):
+            with gr.Tab():
+                file_list = gr.CheckboxGroup(choices=os.listdir('./docs'),label="Files", info="Choose your files to insert!",interactive=True)
                 upload_button = gr.UploadButton("Click to Upload a File", file_types=['.pdf','.txt','.doc'])
-                upload_button.upload(upload_file,upload_button)
+                upload_button.upload(upload_file,upload_button,[file_list])
                 load_btn = gr.Button("Load PDF Documents only")
-                load_btn.click(load_documents)
+            with gr.Tab():
+                chatbot = gr.Chatbot(type="messages")
+                msg = gr.Textbox(label="Type here!",show_label=True)
+                clear_button = gr.Button("Clear History")
+                clear_button.click(clear_history, outputs=chatbot)
+        # Show Nodes
+        with gr.Column(scale=2):
+            with gr.Accordion("See Details"):
+                sources = gr.DataFrame(label="Sources", interactive=True)
+            with gr.Row():
+                embed_plot = gr.Plot(label="Embedding Plot")
 
-            with gr.Tab(label='RAG Chatbot'):
-
-                with gr.Column(scale=0.7,min_width=10):
-                    chatbot = gr.Chatbot(type="messages")
-                    msg = gr.Textbox(label="Type here!",show_label=True)
-                    clear_button = gr.Button("Clear History")
-                    clear_button.click(clear_history, outputs=chatbot)
                 
-                    #ADDSTREAMING AND SHOW NODES
-                    # Show Nodes
-                with gr.Column(scale=0.3, min_width=10):
-                    sources = gr.DataFrame(label="Sources", interactive=True)
-            
-            msg.submit(update_source,[],[sources])
-            msg.submit(respond, [msg, chatbot], [chatbot])
-                                
-
-     
-            
-
-
-
+                
+  
+        load_btn.click(load_documents,outputs=[embed_plot])
+        msg.submit(update_source,[],[sources])
+        msg.submit(respond, [msg, chatbot], [chatbot])
 
 demo.queue().launch()
+     
 
