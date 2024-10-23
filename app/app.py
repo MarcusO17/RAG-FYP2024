@@ -192,6 +192,6 @@ with gr.Blocks(gr.themes.Soft()) as demo:
         msg.submit(update_source,[],[sources])
         msg.submit(respond, [msg, chatbot], [chatbot])
 
-demo.queue().launch()
+demo.queue().launch(share=True)
      
 
