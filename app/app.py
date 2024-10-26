@@ -12,6 +12,9 @@ from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReran
 from sklearn.decomposition import PCA
 import plotly.express as px
 
+#PERFORMANCE TESTING
+from transformers import AutoTokenizer
+from llama_index.core.callbacks import TokenCountingHandler
 
 #Chunking
 from llama_index.core.node_parser import  SemanticSplitterNodeParser
@@ -20,8 +23,10 @@ from llama_index.core.node_parser import  SemanticSplitterNodeParser
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core.ingestion import IngestionPipeline
 from llama_index.core import VectorStoreIndex
-from llama_index.core import PromptTemplate,Document 
+from llama_index.core import PromptTemplate 
 import chromadb
+
+
 
 response = None
 query_engine = None
@@ -56,7 +61,7 @@ def load_documents():
     index = VectorStoreIndex(documents, storage_context=storage_context,similarity_top_k=10 ,node_postprocessors=[reranker_model],show_progress=True)
     gr.Info('Constructed Index')
 
-    query_engine = index.as_query_engine(similarity_top_k=5)
+    query_engine = index.as_query_engine(similarity_top_k=5,streaming=True)
     qa_prompt_template_str = """
      Context: {context_str}
     Instructions:
@@ -88,18 +93,22 @@ def get_file_list():
 def respond(message,history):
     global response
     if query_engine is None:
-        response = Settings.llm.complete(message)
-
+        generator = llm.stream_complete(message)
         history.append({"role": "user", "content": message})
-        history.append({"role": "assistant", "content": response.text})
+        history.append({"role": "assistant", "content":""})
+        for response in generator:
+            history[-1]['content'] += response.delta #Take last message and add
+            yield history
 
     else:
         response = query_engine.query(message)
-
         history.append({"role": "user", "content": message})
-        history.append({"role": "assistant", "content": response.response})
+        history.append({"role": "assistant", "content": ""})
+        for text in response.response_gen:
+            print(text)
+            history[-1]['content'] += text #Take last message and add
+            yield history
 
-    return history
 
 def update_source():
     try:   
