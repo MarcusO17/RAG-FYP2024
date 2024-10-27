@@ -52,7 +52,7 @@ def load_documents():
     pipeline = IngestionPipeline(
         transformations=[
             SemanticSplitterNodeParser(
-            buffer_size=1, breakpoint_percentile_threshold=95, embed_model=embed_model, show_progress=True
+            buffer_size=2, breakpoint_percentile_threshold=95, embed_model=embed_model, show_progress=True
         )
         ],
         vector_store=vector_store,
@@ -62,7 +62,7 @@ def load_documents():
     index = VectorStoreIndex(documents, storage_context=storage_context,similarity_top_k=10 ,node_postprocessors=[reranker_model],show_progress=True)
     gr.Info('Constructed Index')
 
-    query_engine = index.as_chat_engine(similarity_top_k=5,streaming=True,chat_mode="context")
+    query_engine = index.as_chat_engine(similarity_top_k=3,streaming=True,chat_mode="context")
     gr.Info('Constructed Query Engine')
 
     fig = get_embedding_space()
@@ -104,7 +104,7 @@ def update_source():
         for nodes in source_nodes:
             node = nodes.node
             score = nodes.score
-            doc_name = nodes.file_name
+            doc_name = nodes.metadata['file_name']
             text = node.text
 
             formatted_sources.append({
@@ -115,7 +115,7 @@ def update_source():
 
         return pd.DataFrame(formatted_sources)
     except:
-        return pd.DataFrame(columns=["NodeID","Text","Score"])
+        return pd.DataFrame(columns=["Document","Text","Score"])
 
 def get_embedding_space():
     pca = PCA(n_components=3)
@@ -141,6 +141,7 @@ load_dotenv()
 llm = GroqLLM(model_name = "llama-3.1-70b-versatile"
             ,client =Groq(api_key=os.environ.get('GROQ_API_KEY'))
             ,temperature =1.0
+            ,context_window=8192
             ,output_tokens=1024
             ,system_prompt=""" 
                         You're a friendly expert having a conversation. Imagine you're chatting with someone who's genuinely curious about this topic. Keep things natural but precise.
@@ -166,7 +167,7 @@ vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
 storage_context = StorageContext.from_defaults(vector_store=vector_store)
 Settings.llm = llm
 Settings.embed_model = embed_model
-reranker_model = FlagEmbeddingReranker(model="mixedbread-ai/mxbai-embed-large-v1", top_n=5)
+reranker_model = FlagEmbeddingReranker(model="mixedbread-ai/mxbai-embed-large-v1", top_n=3)
 
 with gr.Blocks(gr.themes.Soft()) as demo:
     with gr.Row():
