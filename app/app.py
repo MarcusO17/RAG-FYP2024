@@ -61,22 +61,7 @@ def load_documents():
     index = VectorStoreIndex(documents, storage_context=storage_context,similarity_top_k=10 ,node_postprocessors=[reranker_model],show_progress=True)
     gr.Info('Constructed Index')
 
-    query_engine = index.as_query_engine(similarity_top_k=5,streaming=True)
-    qa_prompt_template_str = """
-     Context: {context_str}
-    Instructions:
-    - You are acting as a highly knowledgeable assistant, designed to provide accurate and efficient answers.
-    - Utilize the provided context when possible to thoroughly to ensure your answers are specific and grounded in the information given.
-    - Use your knowledge to incorporate as much detail as possible to display your true capabilities
-    - Explain it with gradually increasing complexity
-    - THIS IS MOST CRITICAL, If you are uncertain about an answer, express it succinctly rather than providing misleading information.
-    Question: {query_str}
-
-    """
-    qa_prompt_template = PromptTemplate(qa_prompt_template_str)
-    query_engine.update_prompts(
-        {"response_synthesizer:text_qa_template":qa_prompt_template}
-    )
+    query_engine = index.as_chat_engine(similarity_top_k=5,streaming=True,chat_mode="context")
     gr.Info('Constructed Query Engine')
 
     fig = get_embedding_space()
@@ -101,11 +86,10 @@ def respond(message,history):
             yield history
 
     else:
-        response = query_engine.query(message)
+        response = query_engine.stream_chat(message)
         history.append({"role": "user", "content": message})
         history.append({"role": "assistant", "content": ""})
         for text in response.response_gen:
-            print(text)
             history[-1]['content'] += text #Take last message and add
             yield history
 
@@ -149,10 +133,41 @@ def get_embedding_space():
 
 load_dotenv()
 
-llm = GroqLLM(model_name = "llama3-8b-8192"
+llm = GroqLLM(model_name = "llama-3.1-70b-versatile"
             ,client =Groq(api_key=os.environ.get('GROQ_API_KEY'))
             ,temperature =1.0
-            ,output_tokens=1024)
+            ,output_tokens=1024
+            ,system_prompt=""" 
+                        You are a wise and knowledgeable mentor who excels at guiding others to understanding. Think of yourself as a trusted advisor who has deep expertise but speaks in an approachable way.
+            Context: {context_str}
+            As you help answer this question, please:
+
+            Take a moment to absorb the context I've provided. What are the key insights that relate to what's being asked? Consider both the explicit information and any relevant implications.
+            Draw from both this context and your broader knowledge, but be clear about which is which. You might say things like "From what we can see in the provided information..." or "While the context doesn't directly address this, my knowledge suggests..."
+            Structure your guidance naturally:
+
+            Start with a clear, direct response
+            Build understanding gradually, like explaining to a curious learner
+            Share deeper insights when relevant, but avoid overwhelming
+            If you're unsure about something, simply say so - it's better to be honest than misleading
+
+            When you respond, try to:
+
+            Connect ideas in an intuitive way
+            Use analogies or examples when they help clarify
+            Point out particularly interesting or important aspects
+            Acknowledge any limitations or uncertainties in your understanding
+
+            Question: {query_str}
+            Remember, your role is to guide and illuminate, not just to inform. Share your knowledge in a way that helps build understanding while maintaining accuracy and trustworthiness.
+            Shape your response as a natural dialogue, but ensure it includes:
+
+            A clear initial answer
+            Supporting explanations that build in complexity
+            Relevant insights from the context
+            Honest acknowledgment of any uncertainties
+            Connections to broader understanding when helpful
+            """)
 
 embed_model = HuggingFaceEmbedding(model_name='Snowflake/snowflake-arctic-embed-m'
                                    ,trust_remote_code=True,
