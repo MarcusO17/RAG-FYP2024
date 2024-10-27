@@ -11,6 +11,7 @@ import pandas as pd
 from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReranker
 from sklearn.decomposition import PCA
 import plotly.express as px
+import plotly.graph_objects as go
 
 #PERFORMANCE TESTING
 from transformers import AutoTokenizer
@@ -65,11 +66,11 @@ def load_documents():
     gr.Info('Constructed Query Engine')
 
     fig = get_embedding_space()
-    fig.update_scenes(xaxis_visible=False, yaxis_visible=False,zaxis_visible=False)
-    
+    print('Complete')
     return fig
 
 def clear_history():
+    query_engine.reset()
     return []
 
 def get_file_list():
@@ -118,15 +119,19 @@ def update_source():
 
 def get_embedding_space():
     pca = PCA(n_components=3)
-    embeddings = chroma_collection.get(include=['embeddings'])
-
-    if embeddings and len(embeddings['embeddings']) > 0:
+    embeddings = chroma_collection.get(include=['embeddings',"documents"])
+    if embeddings and len(embeddings['embeddings']) > 0: #Check for embeddings 
         emb_transform = pca.fit_transform(embeddings['embeddings'])
-        fig = px.scatter_3d(
+        fig = go.Figure(
+                    data=[
+        go.Scatter3d(
             x=emb_transform[:, 0],
             y=emb_transform[:, 1],
             z=emb_transform[:, 2],
-        )
+            hovertext = [text[:75] + "..." if len(text) > 75 else text for text in embeddings['documents']],
+            hoverinfo='text'
+        )])
+        fig.update_scenes(xaxis_visible=False, yaxis_visible=False,zaxis_visible=False)
         return fig
     else:
         return px.scatter_3d(title="Knowledge Base Empty")
@@ -138,35 +143,16 @@ llm = GroqLLM(model_name = "llama-3.1-70b-versatile"
             ,temperature =1.0
             ,output_tokens=1024
             ,system_prompt=""" 
-                        You are a wise and knowledgeable mentor who excels at guiding others to understanding. Think of yourself as a trusted advisor who has deep expertise but speaks in an approachable way.
+                        You're a friendly expert having a conversation. Imagine you're chatting with someone who's genuinely curious about this topic. Keep things natural but precise.
             Context: {context_str}
-            As you help answer this question, please:
+            Share your thoughts like you would with a friend, but:
 
-            Take a moment to absorb the context I've provided. What are the key insights that relate to what's being asked? Consider both the explicit information and any relevant implications.
-            Draw from both this context and your broader knowledge, but be clear about which is which. You might say things like "From what we can see in the provided information..." or "While the context doesn't directly address this, my knowledge suggests..."
-            Structure your guidance naturally:
+            Draw from the context first
+            Add your knowledge when helpful
+            Keep it real when you're not sure
+            Start simple, add depth if needed
 
-            Start with a clear, direct response
-            Build understanding gradually, like explaining to a curious learner
-            Share deeper insights when relevant, but avoid overwhelming
-            If you're unsure about something, simply say so - it's better to be honest than misleading
-
-            When you respond, try to:
-
-            Connect ideas in an intuitive way
-            Use analogies or examples when they help clarify
-            Point out particularly interesting or important aspects
-            Acknowledge any limitations or uncertainties in your understanding
-
-            Question: {query_str}
-            Remember, your role is to guide and illuminate, not just to inform. Share your knowledge in a way that helps build understanding while maintaining accuracy and trustworthiness.
-            Shape your response as a natural dialogue, but ensure it includes:
-
-            A clear initial answer
-            Supporting explanations that build in complexity
-            Relevant insights from the context
-            Honest acknowledgment of any uncertainties
-            Connections to broader understanding when helpful
+            What are your thoughts on this? {query_str}
             """)
 
 embed_model = HuggingFaceEmbedding(model_name='Snowflake/snowflake-arctic-embed-m'
