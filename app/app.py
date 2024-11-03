@@ -1,6 +1,7 @@
 # Core Libraries
 import gradio as gr
 import shutil
+import time
 import os
 from llama_index.core import Settings,StorageContext,VectorStoreIndex,SimpleDirectoryReader
 from dotenv import load_dotenv
@@ -26,8 +27,6 @@ from llama_index.core.ingestion import IngestionPipeline
 from llama_index.core import VectorStoreIndex
 from llama_index.core import PromptTemplate 
 import chromadb
-
-
 
 response = None
 query_engine = None
@@ -62,7 +61,7 @@ def load_documents():
     index = VectorStoreIndex(documents, storage_context=storage_context,similarity_top_k=10 ,node_postprocessors=[reranker_model],show_progress=True)
     gr.Info('Constructed Index')
 
-    query_engine = index.as_chat_engine(similarity_top_k=3,streaming=True,chat_mode="context")
+    query_engine = index.as_chat_engine(similarity_top_k=3,chat_mode="context")
     gr.Info('Constructed Query Engine')
 
     fig = get_embedding_space()
@@ -78,21 +77,33 @@ def get_file_list():
 
 def respond(message,history):
     global response
+    count = 0
     if query_engine is None:
+        time_start = time.time()
         generator = llm.stream_complete(message)
         history.append({"role": "user", "content": message})
         history.append({"role": "assistant", "content":""})
         for response in generator:
             history[-1]['content'] += response.delta #Take last message and add
             yield history
+        time_end = time.time()
+
 
     else:
+        time_start = time.time()
         response = query_engine.stream_chat(message)
         history.append({"role": "user", "content": message})
         history.append({"role": "assistant", "content": ""})
         for text in response.response_gen:
-            history[-1]['content'] += text #Take last message and add
+            count += 1
+            if count == 1:
+                time_firsttoken = time.time()
+            history[-1]['content'] += ''.join(text) #Take last message and add
             yield history
+        time_end = time.time()
+    
+    print(f'Total Generation Time : {time_end-time_start:.5f} seconds')
+    print(f'Time to First Token : {time_firsttoken-time_start:.5f} seconds')
 
 
 def update_source():
@@ -112,6 +123,7 @@ def update_source():
                 "Text": text,
                 "Score": score
             })
+
 
         return pd.DataFrame(formatted_sources)
     except:
@@ -138,7 +150,7 @@ def get_embedding_space():
 
 load_dotenv()
 
-llm = GroqLLM(model_name = "llama-3.1-70b-versatile"
+llm = GroqLLM(model_name = "llama3-8b-8192"
             ,client =Groq(api_key=os.environ.get('GROQ_API_KEY'))
             ,temperature =1.0
             ,context_window=8192
