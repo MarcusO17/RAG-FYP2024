@@ -14,10 +14,6 @@ from sklearn.decomposition import PCA
 import plotly.express as px
 import plotly.graph_objects as go
 
-#PERFORMANCE TESTING
-from transformers import AutoTokenizer
-from llama_index.core.callbacks import TokenCountingHandler
-
 #Chunking
 from llama_index.core.node_parser import  SemanticSplitterNodeParser
 
@@ -25,7 +21,6 @@ from llama_index.core.node_parser import  SemanticSplitterNodeParser
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core.ingestion import IngestionPipeline
 from llama_index.core import VectorStoreIndex
-from llama_index.core import PromptTemplate 
 import chromadb
 
 response = None
@@ -79,18 +74,18 @@ def respond(message,history):
     global response
     count = 0
     if query_engine is None:
-        time_start = time.time()
+        #time_start = time.time()
         generator = llm.stream_complete(message)
         history.append({"role": "user", "content": message})
         history.append({"role": "assistant", "content":""})
         for response in generator:
-            history[-1]['content'] += response.delta #Take last message and add
+            history[-1]['content'] += response #Take last message and add
             yield history
-        time_end = time.time()
+        #time_end = time.time()
 
 
     else:
-        time_start = time.time()
+        #time_start = time.time()
         response = query_engine.stream_chat(message)
         history.append({"role": "user", "content": message})
         history.append({"role": "assistant", "content": ""})
@@ -100,10 +95,10 @@ def respond(message,history):
                 time_firsttoken = time.time()
             history[-1]['content'] += ''.join(text) #Take last message and add
             yield history
-        time_end = time.time()
+        #time_end = time.time()
     
-    print(f'Total Generation Time : {time_end-time_start:.5f} seconds')
-    print(f'Time to First Token : {time_firsttoken-time_start:.5f} seconds')
+    #print(f'Total Generation Time : {time_end-time_start:.5f} seconds')
+    #print(f'Time to First Token : {time_firsttoken-time_start:.5f} seconds')
 
 
 def update_source():
@@ -191,12 +186,12 @@ with gr.Blocks(gr.themes.Soft()) as demo:
     with gr.Row():
         # Chat Interface
         with gr.Column(scale=3):
-            with gr.Tab():
+            with gr.Tab(label="Load Files"):
                 file_list = gr.CheckboxGroup(choices=os.listdir('./docs'),label="Files", info="Choose your files to insert!",interactive=True)
                 upload_button = gr.UploadButton("Click to Upload a File", file_types=['.pdf','.txt','.doc'])
                 upload_button.upload(upload_file,upload_button,[file_list])
                 load_btn = gr.Button("Load PDF Documents only")
-            with gr.Tab():
+            with gr.Tab(label="Chatbot"):
                 chatbot = gr.Chatbot(type="messages")
                 msg = gr.Textbox(label="Type here!",show_label=True)
                 clear_button = gr.Button("Clear History")
