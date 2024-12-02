@@ -33,8 +33,6 @@ def upload_file(file):
     gr.Info('Recieved!')
     shutil.copy(file, UPLOAD_PATH)
     gr.Info('Successful!!')
-    file_list = get_file_list()
-    return file_list
 
 def update_file_list(selected_files):
     return selected_files
@@ -81,7 +79,7 @@ def clear_history():
     return []
 
 def get_file_list():
-    return [files for files in os.listdir('./docs')]
+    return [f for f in os.listdir('./docs')]
 
 def respond(message,history):
     global response
@@ -205,14 +203,13 @@ with gr.Blocks(gr.themes.Soft()) as demo:
         # Chat Interface
         with gr.Column(scale=3):
             with gr.Tab(label="Load Files"):
-                file_list = gr.CheckboxGroup(choices=get_file_list(), label="Files", info="Choose your files to insert!", interactive=True)
+                file_list = gr.CheckboxGroup(choices=get_file_list(),label="Files", info="Choose your files to insert!", interactive=True)
 
                 selected_files = gr.State([])
 
                 file_list.change(update_file_list, inputs=[file_list], outputs=[selected_files])
 
                 upload_button = gr.UploadButton("Click to Upload a File", file_types=['.pdf','.txt','.doc'])
-                upload_button.upload(upload_file,upload_button,[file_list])
                 load_btn = gr.Button("Load PDF Documents only")
             with gr.Tab(label="Chatbot"):
                 chatbot = gr.Chatbot(type="messages")
@@ -228,7 +225,7 @@ with gr.Blocks(gr.themes.Soft()) as demo:
   
                 
                 
-  
+        upload_button.upload(upload_file,upload_button,file_list)
         load_btn.click(load_documents,[file_list],outputs=[embed_plot])
         msg.submit(update_source,[],[sources])
         msg.submit(respond, [msg, chatbot], [chatbot])
