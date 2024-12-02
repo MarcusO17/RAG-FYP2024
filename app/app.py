@@ -30,18 +30,31 @@ def upload_file(file):
     UPLOAD_PATH = "./docs"
     if os.path.exists(UPLOAD_PATH) is not True:
         os.mkdir(UPLOAD_PATH)
+    gr.Info('Recieved!')
     shutil.copy(file, UPLOAD_PATH)
     gr.Info('Successful!!')
-    return get_file_list()
+    file_list = get_file_list()
+    return file_list
 
+def update_file_list(selected_files):
+    return selected_files
 
-def load_documents():
+def load_documents(selected_files=None):
     global index
     global query_engine
+    index = None
     query_engine = None
-
     print('Loading Documents')
-    files = SimpleDirectoryReader(input_dir="./docs").load_data()
+
+    # If no files selected, use all files in directory
+    if not selected_files:
+        selected_files = get_file_list()
+
+    file_paths = [os.path.join("./docs", f) for f in selected_files]
+    for files in file_paths:
+        print(file_paths)
+
+    files = SimpleDirectoryReader(input_files=file_paths).load_data()
 
     pipeline = IngestionPipeline(
         transformations=[
@@ -57,8 +70,8 @@ def load_documents():
     gr.Info('Constructed Index')
 
     query_engine = index.as_chat_engine(similarity_top_k=3,chat_mode="context")
-    gr.Info('Constructed Query Engine')
-
+    gr.Info('Constructed Query Engine')               
+  
     fig = get_embedding_space()
     print('Complete')
     return fig
@@ -68,7 +81,7 @@ def clear_history():
     return []
 
 def get_file_list():
-    return os.listdir('./docs')
+    return [files for files in os.listdir('./docs')]
 
 def respond(message,history):
     global response
@@ -91,9 +104,14 @@ def respond(message,history):
         history.append({"role": "assistant", "content": ""})
         for text in response.response_gen:
             count += 1
-            if count == 1:
-                time_firsttoken = time.time()
-            history[-1]['content'] += ''.join(text) #Take last message and add
+            #if count == 1:
+                #time_firsttoken = time.time()
+            if '```' in text:
+                formatted_text = text
+            else:
+                formatted_text = text.replace('\n', '  \n')  
+            
+            history[-1]['content'] += formatted_text
             yield history
         #time_end = time.time()
     
@@ -122,7 +140,7 @@ def update_source():
 
         return pd.DataFrame(formatted_sources)
     except:
-        return pd.DataFrame(columns=["Document","Text","Score"])
+        return pd.DataFrame(columns=["Document","Text","Score"]).sort_values(by="Score",ascending=False)
 
 def get_embedding_space():
     pca = PCA(n_components=3)
@@ -187,7 +205,12 @@ with gr.Blocks(gr.themes.Soft()) as demo:
         # Chat Interface
         with gr.Column(scale=3):
             with gr.Tab(label="Load Files"):
-                file_list = gr.CheckboxGroup(choices=os.listdir('./docs'),label="Files", info="Choose your files to insert!",interactive=True)
+                file_list = gr.CheckboxGroup(choices=get_file_list(), label="Files", info="Choose your files to insert!", interactive=True)
+
+                selected_files = gr.State([])
+
+                file_list.change(update_file_list, inputs=[file_list], outputs=[selected_files])
+
                 upload_button = gr.UploadButton("Click to Upload a File", file_types=['.pdf','.txt','.doc'])
                 upload_button.upload(upload_file,upload_button,[file_list])
                 load_btn = gr.Button("Load PDF Documents only")
@@ -202,11 +225,11 @@ with gr.Blocks(gr.themes.Soft()) as demo:
                 sources = gr.DataFrame(label="Sources", interactive=True)
             with gr.Row():
                 embed_plot = gr.Plot(label="Embedding Plot")
-
+  
                 
                 
   
-        load_btn.click(load_documents,outputs=[embed_plot])
+        load_btn.click(load_documents,[file_list],outputs=[embed_plot])
         msg.submit(update_source,[],[sources])
         msg.submit(respond, [msg, chatbot], [chatbot])
 
