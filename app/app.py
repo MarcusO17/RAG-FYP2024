@@ -13,6 +13,7 @@ from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReran
 from sklearn.decomposition import PCA
 import plotly.express as px
 import plotly.graph_objects as go
+from llama_index.llms.openai import OpenAI
 
 #Chunking
 from llama_index.core.node_parser import  SemanticSplitterNodeParser
@@ -33,6 +34,8 @@ def upload_file(file):
     gr.Info('Recieved!')
     shutil.copy(file, UPLOAD_PATH)
     gr.Info('Successful!!')
+    return gr.CheckboxGroup(choices=get_file_list(),label="Files", info="Choose your files to insert!", interactive=True)
+
 
 def update_file_list(selected_files):
     return selected_files
@@ -178,6 +181,26 @@ llm = GroqLLM(model_name = "llama3-8b-8192"
 
             What are your thoughts on this? {query_str}
             """)
+
+"""
+llm = OpenAI(
+        model="gpt-4o-mini",
+        api_key=os.environ.get('OPENAI_API_KEY'),
+        system_prompt='''
+                        You're a friendly expert having a conversation. Imagine you're chatting with someone who's genuinely curious about this topic. Keep things natural but precise.
+            Context: {context_str}
+            Share your thoughts like you would with a friend, but:
+
+            Draw from the context first
+            Add your knowledge when helpful
+            Keep it real when you're not sure
+            Start simple, add depth if needed
+
+            What are your thoughts on this? {query_str}
+            '''
+        )
+"""
+
 
 embed_model = HuggingFaceEmbedding(model_name='Snowflake/snowflake-arctic-embed-m'
                                    ,trust_remote_code=True,
